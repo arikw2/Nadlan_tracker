@@ -1,4 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">נדל״ן טרקר</string>
+
+    <!-- Bottom navigation -->
+    <string name="nav_search">חיפוש</string>
+    <string name="nav_favorites">מועדפים</string>
+    <string name="nav_macro">מדד הדיור</string>
+    <string name="nav_settings">הגדרות</string>
+
+    <!-- Search screen -->
+    <string name="search_title">חיפוש עסקאות נדל״ן</string>
+    <string name="search_hint">רחוב, שכונה או עיר…</string>
+    <string name="search_scope_street">רחוב</string>
+    <string name="search_scope_neighborhood">שכונה</string>
+    <string name="search_scope_radius">רדיוס</string>
+    <string name="search_radius_label">רדיוס: %1$d מטר</string>
+    <string name="search_button">חיפוש עסקאות</string>
+    <string name="search_filters">סינון</string>
+    <string name="search_no_results">לא נמצאו כתובות מתאימות</string>
+    <string name="search_resolving">מאתר את האזור…</string>
+    <string name="search_resolve_failed">לא הצלחנו לאתר את האזור המבוקש. נסו כתובת אחרת.</string>
+    <string name="search_pick_location">בחרו כתובת מהרשימה כדי לחפש</string>
+
+    <!-- Filters -->
+    <string name="filter_title">סינון תוצאות</string>
+    <string name="filter_period">תקופה</string>
+    <string name="filter_period_all">הכל</string>
+    <string name="filter_period_1y">שנה</string>
+    <string name="filter_period_3y">3 שנים</string>
+    <string name="filter_period_5y">5 שנים</string>
+    <string name="filter_rooms">חדרים: %1$s–%2$s</string>
+    <string name="filter_rooms_any">חדרים: הכל</string>
+    <string name="filter_apply">החלה</string>
+
+    <!-- Results screen -->
+    <string name="results_tab_deals">עסקאות</string>
+    <string name="results_tab_trends">מגמות</string>
+    <string name="results_empty">אין עסקאות תואמות. נסו להרחיב את הסינון.</string>
+    <string name="results_stale_banner">המקור הממשלתי לא זמין כרגע — מוצגים נתונים שמורים</string>
+    <string name="results_error">לא הצלחנו להביא נתונים. בדקו את החיבור ונסו שוב.</string>
+    <string name="results_retry">נסו שוב</string>
+    <string name="results_deal_count">%1$d עסקאות</string>
+    <string name="results_save_favorite">שמירה במועדפים</string>
+    <string name="results_favorite_saved">נשמר במועדפים</string>
+    <string name="results_refresh">רענון</string>
+    <string name="deal_rooms">%1$s חד׳</string>
+    <string name="deal_area">%1$s מ״ר</string>
+    <string name="deal_floor">קומה %1$s</string>
+    <string name="deal_price_per_sqm">%1$s ₪/מ״ר</string>
+
+    <!-- Favorite dialog -->
+    <string name="favorite_dialog_title">שמירת חיפוש</string>
+    <string name="favorite_dialog_hint">שם החיפוש</string>
+    <string name="favorite_dialog_save">שמירה</string>
+    <string name="favorite_dialog_cancel">ביטול</string>
+
+    <!-- Favorites screen -->
+    <string name="favorites_title">חיפושים שמורים</string>
+    <string name="favorites_empty">אין עדיין חיפושים שמורים.\nחפשו אזור ושמרו אותו בכוכב ⭐</string>
+    <string name="favorites_never_run">טרם הופעל</string>
+    <string name="favorites_last_run">הופעל לאחרונה: %1$s</string>
+    <string name="favorites_delete">מחיקה</string>
+    <string name="favorites_broken">חיפוש שמור מגרסה ישנה — יש למחוק</string>
+
+    <!-- Macro screen -->
+    <string name="macro_title">מדד מחירי הדירות</string>
+    <string name="macro_subtitle">הלשכה המרכזית לסטטיסטיקה</string>
+    <string name="macro_latest_value">ערך אחרון</string>
+    <string name="macro_yoy">שינוי שנתי</string>
+    <string name="macro_mom">שינוי חודשי</string>
+    <string name="macro_period_5y">5 שנים</string>
+    <string name="macro_period_10y">10 שנים</string>
+    <string name="macro_period_all">הכל</string>
+    <string name="macro_error">לא הצלחנו להביא את נתוני המדד.</string>
+
+    <!-- Trends -->
+    <string name="trend_median_price">מחיר חציוני לפי חודש</string>
+    <string name="trend_price_per_sqm">מחיר חציוני למ״ר לפי חודש</string>
+    <string name="trend_deal_count">מספר עסקאות לפי חודש</string>
+    <string name="trend_not_enough_data">אין מספיק נתונים להצגת גרף</string>
+
+    <!-- Settings screen -->
+    <string name="settings_title">הגדרות</string>
+    <string name="settings_clear_cache">ניקוי נתונים שמורים</string>
+    <string name="settings_clear_cache_done">הנתונים השמורים נוקו</string>
+    <string name="settings_about_title">על האפליקציה</string>
+    <string name="settings_about_body">הנתונים מוצגים כפי שהם ממקורות ממשלתיים פומביים: מאגר עסקאות הנדל״ן (nadlan.gov.il / govmap.gov.il) ומדד מחירי הדירות של הלמ״ס. האפליקציה אינה ייעוץ השקעות.</string>
+    <string name="settings_sources_title">מקורות נתונים</string>
+    <string name="settings_version">גרסה %1$s</string>
 </resources>
