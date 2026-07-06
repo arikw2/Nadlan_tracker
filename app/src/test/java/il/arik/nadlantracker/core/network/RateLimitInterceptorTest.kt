@@ -41,6 +41,18 @@ class RateLimitInterceptorTest {
     }
 
     @Test
+    fun `first request never sleeps even at realistic clock values`() {
+        // Regression: a Long.MIN_VALUE sentinel underflowed against
+        // System.currentTimeMillis-sized clocks, producing a near-infinite sleep.
+        fakeNow = 1_751_000_000_000 // ≈ mid-2025 epoch millis
+        server.enqueue(MockResponse())
+
+        get(client(1500))
+
+        assertTrue(sleeps.isEmpty())
+    }
+
+    @Test
     fun `second rapid request waits out the interval`() {
         server.enqueue(MockResponse())
         server.enqueue(MockResponse())

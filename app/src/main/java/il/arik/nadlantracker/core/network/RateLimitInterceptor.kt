@@ -27,8 +27,8 @@ class RateLimitInterceptor(
         if (interval != null) {
             val waitMs = synchronized(lock) {
                 val now = nowMs()
-                val earliest = (lastRequestAt[host] ?: Long.MIN_VALUE) + interval
-                val wait = (earliest - now).coerceAtLeast(0)
+                val last = lastRequestAt[host]
+                val wait = if (last == null) 0L else (last + interval - now).coerceAtLeast(0)
                 lastRequestAt[host] = now + wait
                 wait
             }
