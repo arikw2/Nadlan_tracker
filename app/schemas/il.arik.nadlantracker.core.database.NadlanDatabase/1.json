@@ -1,0 +1,208 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "ccc15f4695c66779404a79d5d1bda2fe",
+    "entities": [
+      {
+        "tableName": "deals",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`queryHash` TEXT NOT NULL, `dealKey` TEXT NOT NULL, `dealDateEpochDay` INTEGER NOT NULL, `priceIls` INTEGER NOT NULL, `rooms` REAL, `areaSqm` REAL, `propertyType` TEXT, `address` TEXT, `city` TEXT, `neighborhood` TEXT, `floor` TEXT, PRIMARY KEY(`queryHash`, `dealKey`))",
+        "fields": [
+          {
+            "fieldPath": "queryHash",
+            "columnName": "queryHash",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dealKey",
+            "columnName": "dealKey",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dealDateEpochDay",
+            "columnName": "dealDateEpochDay",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "priceIls",
+            "columnName": "priceIls",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "rooms",
+            "columnName": "rooms",
+            "affinity": "REAL"
+          },
+          {
+            "fieldPath": "areaSqm",
+            "columnName": "areaSqm",
+            "affinity": "REAL"
+          },
+          {
+            "fieldPath": "propertyType",
+            "columnName": "propertyType",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "address",
+            "columnName": "address",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "city",
+            "columnName": "city",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "neighborhood",
+            "columnName": "neighborhood",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "floor",
+            "columnName": "floor",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "queryHash",
+            "dealKey"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_deals_queryHash",
+            "unique": false,
+            "columnNames": [
+              "queryHash"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_deals_queryHash` ON `${TABLE_NAME}` (`queryHash`)"
+          }
+        ]
+      },
+      {
+        "tableName": "cache_meta",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`queryHash` TEXT NOT NULL, `fetchedAtEpochMs` INTEGER NOT NULL, `resultCount` INTEGER NOT NULL, PRIMARY KEY(`queryHash`))",
+        "fields": [
+          {
+            "fieldPath": "queryHash",
+            "columnName": "queryHash",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fetchedAtEpochMs",
+            "columnName": "fetchedAtEpochMs",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "resultCount",
+            "columnName": "resultCount",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "queryHash"
+          ]
+        }
+      },
+      {
+        "tableName": "favorite_searches",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `displayName` TEXT NOT NULL, `queryJson` TEXT NOT NULL, `createdAtEpochMs` INTEGER NOT NULL, `lastRunAtEpochMs` INTEGER)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "displayName",
+            "columnName": "displayName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "queryJson",
+            "columnName": "queryJson",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdAtEpochMs",
+            "columnName": "createdAtEpochMs",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastRunAtEpochMs",
+            "columnName": "lastRunAtEpochMs",
+            "affinity": "INTEGER"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        }
+      },
+      {
+        "tableName": "index_points",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`seriesCode` INTEGER NOT NULL, `period` TEXT NOT NULL, `value` REAL NOT NULL, `monthlyChangePercent` REAL, `yearlyChangePercent` REAL, PRIMARY KEY(`seriesCode`, `period`))",
+        "fields": [
+          {
+            "fieldPath": "seriesCode",
+            "columnName": "seriesCode",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "period",
+            "columnName": "period",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "value",
+            "columnName": "value",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "monthlyChangePercent",
+            "columnName": "monthlyChangePercent",
+            "affinity": "REAL"
+          },
+          {
+            "fieldPath": "yearlyChangePercent",
+            "columnName": "yearlyChangePercent",
+            "affinity": "REAL"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "seriesCode",
+            "period"
+          ]
+        }
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'ccc15f4695c66779404a79d5d1bda2fe')"
+    ]
+  }
+}

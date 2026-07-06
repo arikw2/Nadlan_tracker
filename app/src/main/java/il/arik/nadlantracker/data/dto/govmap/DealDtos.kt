@@ -53,5 +53,7 @@ data class DealDto(
     val parcelNum: Long? = null,
     val subParcelNum: Long? = null,
     val polygonId: String? = null,
+    /** WKT MULTIPOLYGON of the parcel, EPSG:3857 — used for radius filtering. */
+    val shape: String? = null,
     val sourceorder: Int? = null,
 )
