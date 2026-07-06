@@ -55,4 +55,12 @@ sealed interface SearchQuery {
         override val displayName: String,
         override val filters: DealFilters = DealFilters(),
     ) : SearchQuery
+
+    @Serializable
+    @SerialName("settlement")
+    data class Settlement(
+        val polygonId: String,
+        override val displayName: String,
+        override val filters: DealFilters = DealFilters(),
+    ) : SearchQuery
 }

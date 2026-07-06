@@ -17,12 +17,21 @@
 #        -> {totalCount:"98", data:[deal...]} — all deals on that polygon's street
 #   GET  /api/real-estate/neighborhood-deals/{polygonId}?limit=&offset=
 #        -> same envelope — deals in the polygon's neighborhood (totalCount caps at 1500)
+#   GET  /api/real-estate/settlement-deals/{polygonId}?limit=&offset=
+#        -> same envelope — deals across the whole settlement (city/town)
+#   Extra query params on all three deals endpoints (from the govmap frontend bundle):
+#        startDate/endDate ("YYYY-MM-DD") — VERIFIED working server-side date filter
+#        roomNums ("3,3.5,4") — VERIFIED working
+#        propertyType (Hebrew description, e.g. "דירה") — VERIFIED; English enum values return 0
+#        dealType ("first-hand-deal"/"second-hand-deal") — server returns 500, do not use
 #   Deal fields: objectid, dealId, dealAmount(int ILS), dealDate(ISO), assetArea(int m2),
 #        assetRoomNum, floorNo(Hebrew), propertyTypeDescription?, dealNatureDescription?,
 #        settlementNameHeb/Eng, streetNameHeb/Eng, houseNum("12.0"), neighborhood,
 #        gushNum, parcelNum, subParcelNum, polygonId, shape(MULTIPOLYGON), sourceorder
-#   NOTES: limit/offset work; fromDate/toDate are IGNORED by the server (filter client-side);
-#          aggressive rate limiting — keep >=1.5s between requests.
+#   NOTES: limit/offset work; aggressive rate limiting — keep >=1.5s between requests.
+#          Construction year (שנת בנייה) is NOT in the govmap deal schema; it exists only
+#          in api.nadlan.gov.il/deal-data ("yearBuilt"), which is protected by a signed
+#          JWT + reCAPTCHA + per-user limits — intentionally not integrated.
 #
 # api.cbs.gov.il (dwelling price index, code 40010):
 #   GET /index/data/price?id=40010&format=json&lang=he&last=N

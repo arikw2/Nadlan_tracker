@@ -4,7 +4,7 @@ Android app (Hebrew, RTL) for tracking Israeli real-estate data straight from of
 
 ## Features
 
-- **חיפוש עסקאות** — search real transactions by street, neighborhood, or radius around an address, using the public govmap.gov.il API that backs [nadlan.gov.il](https://www.nadlan.gov.il) (Israel Tax Authority data). Filter by period and room count.
+- **חיפוש עסקאות** — search real transactions by street, neighborhood, whole settlement, or radius around an address, using the public govmap.gov.il API that backs [nadlan.gov.il](https://www.nadlan.gov.il) (Israel Tax Authority data). Filter by period and room count; deal cards show price, ₪/m², rooms, floor, property type, neighborhood, and גוש/חלקה.
 - **מגמות** — charts per search: median price by month, median ₪/m², and monthly deal counts.
 - **מדד הדיור** — the CBS dwelling-price index (code 40010) from [api.cbs.gov.il](https://api.cbs.gov.il), with 5y/10y/full-history views and latest/YoY/MoM stats.
 - **מועדפים** — save any search and re-run it later with one tap to get fresh data.
@@ -28,7 +28,8 @@ Key libraries: Jetpack Compose (Material 3), Navigation-Compose type-safe routes
 
 The government endpoints are undocumented and were mapped by probing — the full discovered contract is documented in [`scripts/probe_api.sh`](scripts/probe_api.sh), which also regenerates the recorded JSON fixtures in `app/src/test/resources/fixtures/` used by the parsing contract tests. Notable quirks:
 
-- govmap `street-deals` / `neighborhood-deals` honor `limit`/`offset` but **ignore date-range params** — all filtering is client-side.
+- govmap `street-deals` / `neighborhood-deals` / `settlement-deals` honor `limit`/`offset`, plus (discovered from the site's own frontend bundle) `startDate`/`endDate`, `roomNums`, and `propertyType` (Hebrew values). The app pushes the date window server-side; rooms/type filters stay client-side so tweaking them never refetches. `dealType` exists in the frontend but the server 500s on it.
+- Construction year (שנת בנייה) is **not** in the govmap schema. It exists only in nadlan.gov.il's `deal-data` API (`yearBuilt`), which sits behind a signed JWT, reCAPTCHA, and per-user quotas — deliberately not integrated.
 - The same transaction often appears twice (two source systems, dates ±1 day, amounts ±0.5%) — the mapper collapses these near-duplicates.
 - The API rate-limits aggressively; the app throttles to one govmap request per 1.5s, backs off on 429/5xx, and treats a double-403 as a WAF block that falls back to cache.
 

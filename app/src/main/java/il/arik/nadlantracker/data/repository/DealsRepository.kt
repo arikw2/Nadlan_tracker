@@ -79,14 +79,19 @@ class DealsRepository(
     }
 
     private suspend fun fetchAll(query: SearchQuery): List<Deal> {
+        val start = serverStartDate(query.filters)
+        val end = serverEndDate(query.filters)
         val mapped = when (query) {
             is SearchQuery.Street -> pageAll { limit, offset ->
-                api.streetDeals(query.polygonId, limit, offset)
+                api.streetDeals(query.polygonId, limit, offset, start, end)
             }
             is SearchQuery.Neighborhood -> pageAll { limit, offset ->
-                api.neighborhoodDeals(query.polygonId, limit, offset)
+                api.neighborhoodDeals(query.polygonId, limit, offset, start, end)
             }
-            is SearchQuery.Radius -> fetchRadius(query)
+            is SearchQuery.Settlement -> pageAll { limit, offset ->
+                api.settlementDeals(query.polygonId, limit, offset, start, end)
+            }
+            is SearchQuery.Radius -> fetchRadius(query, start, end)
         }
         val exact = mapped
             .map { it.deal }
@@ -94,12 +99,23 @@ class DealsRepository(
         return DealMapper.dedupeNearDuplicates(exact)
     }
 
+    /** "2024-01" → "2024-01-01"; the endpoints take full ISO dates. */
+    private fun serverStartDate(filters: DealFilters): String? =
+        filters.fromYearMonth?.let { "$it-01" }
+
+    private fun serverEndDate(filters: DealFilters): String? =
+        filters.toYearMonth?.let { java.time.YearMonth.parse(it).atEndOfMonth().toString() }
+
     /**
      * The radius endpoint lists buildings, not deals. Fetch the street deals
      * of the few distinct streets inside the ring, then keep only parcels
      * whose coordinate actually falls within the requested radius.
      */
-    private suspend fun fetchRadius(query: SearchQuery.Radius): List<DealMapper.MappedDeal> {
+    private suspend fun fetchRadius(
+        query: SearchQuery.Radius,
+        start: String?,
+        end: String?,
+    ): List<DealMapper.MappedDeal> {
         val buildings = api.dealsByRadius("${query.x},${query.y}", query.radiusMeters)
         val streetPolygons = buildings
             .filter { it.polygonId != null }
@@ -108,7 +124,9 @@ class DealsRepository(
             .map { it.polygonId!! }
 
         return streetPolygons
-            .flatMap { polygonId -> pageAll { limit, offset -> api.streetDeals(polygonId, limit, offset) } }
+            .flatMap { polygonId ->
+                pageAll { limit, offset -> api.streetDeals(polygonId, limit, offset, start, end) }
+            }
             .filter { mapped ->
                 mapped.x != null && mapped.y != null &&
                     Wkt.approximateMeters(mapped.x, mapped.y, query.x, query.y) <= query.radiusMeters
@@ -129,12 +147,22 @@ class DealsRepository(
         return result
     }
 
-    /** Stable cache key for the fetch scope: the query with filters blanked. */
+    /**
+     * Stable cache key for what was actually fetched: the scope plus the
+     * server-applied date window. Rooms/property-type filters stay local
+     * (changing them re-filters the cache with no refetch), and displayName
+     * is cosmetic.
+     */
     fun scopeHash(query: SearchQuery): String {
+        val fetchFilters = DealFilters(
+            fromYearMonth = query.filters.fromYearMonth,
+            toYearMonth = query.filters.toYearMonth,
+        )
         val scopeOnly: SearchQuery = when (query) {
-            is SearchQuery.Street -> query.copy(filters = DealFilters(), displayName = "")
-            is SearchQuery.Neighborhood -> query.copy(filters = DealFilters(), displayName = "")
-            is SearchQuery.Radius -> query.copy(filters = DealFilters(), displayName = "")
+            is SearchQuery.Street -> query.copy(filters = fetchFilters, displayName = "")
+            is SearchQuery.Neighborhood -> query.copy(filters = fetchFilters, displayName = "")
+            is SearchQuery.Settlement -> query.copy(filters = fetchFilters, displayName = "")
+            is SearchQuery.Radius -> query.copy(filters = fetchFilters, displayName = "")
         }
         val encoded = json.encodeToString(SearchQuery.serializer(), scopeOnly)
         return MessageDigest.getInstance("SHA-256")

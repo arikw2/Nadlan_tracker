@@ -22,6 +22,8 @@ data class Deal(
     val city: String?,
     val neighborhood: String?,
     val floor: String?,
+    /** Land-registry reference: "גוש/חלקה[/תת-חלקה]", e.g. "6902/274/7". */
+    val gushHelka: String? = null,
 ) {
     val pricePerSqm: Double?
         get() = areaSqm?.takeIf { it > 0 }?.let { priceIls / it }

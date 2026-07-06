@@ -13,6 +13,7 @@
     <string name="search_hint">רחוב, שכונה או עיר…</string>
     <string name="search_scope_street">רחוב</string>
     <string name="search_scope_neighborhood">שכונה</string>
+    <string name="search_scope_settlement">יישוב</string>
     <string name="search_scope_radius">רדיוס</string>
     <string name="search_radius_label">רדיוס: %1$d מטר</string>
     <string name="search_button">חיפוש עסקאות</string>
@@ -48,6 +49,7 @@
     <string name="deal_area">%1$s מ״ר</string>
     <string name="deal_floor">קומה %1$s</string>
     <string name="deal_price_per_sqm">%1$s ₪/מ״ר</string>
+    <string name="deal_gush_helka">גוש/חלקה %1$s</string>
 
     <!-- Favorite dialog -->
     <string name="favorite_dialog_title">שמירת חיפוש</string>

@@ -32,6 +32,7 @@ class DealDaoTest {
         city = "תל אביב-יפו",
         neighborhood = null,
         floor = null,
+        gushHelka = null,
     )
 
     @Before

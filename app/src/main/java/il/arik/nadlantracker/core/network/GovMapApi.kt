@@ -27,11 +27,21 @@ interface GovMapApi {
         @Path("radius") radius: Int,
     ): List<RadiusBuildingDto>
 
+    /**
+     * Server-side filters (probed from the govmap frontend, all optional):
+     * [startDate]/[endDate] as "YYYY-MM-DD", [roomNums] as a comma list
+     * ("3,3.5,4"), [propertyType] as the Hebrew description (e.g. "דירה").
+     * The frontend also sends dealType, but the server 500s on it.
+     */
     @GET("api/real-estate/street-deals/{polygonId}")
     suspend fun streetDeals(
         @Path("polygonId") polygonId: String,
         @Query("limit") limit: Int,
         @Query("offset") offset: Int,
+        @Query("startDate") startDate: String? = null,
+        @Query("endDate") endDate: String? = null,
+        @Query("roomNums") roomNums: String? = null,
+        @Query("propertyType") propertyType: String? = null,
     ): DealsResponse
 
     @GET("api/real-estate/neighborhood-deals/{polygonId}")
@@ -39,5 +49,21 @@ interface GovMapApi {
         @Path("polygonId") polygonId: String,
         @Query("limit") limit: Int,
         @Query("offset") offset: Int,
+        @Query("startDate") startDate: String? = null,
+        @Query("endDate") endDate: String? = null,
+        @Query("roomNums") roomNums: String? = null,
+        @Query("propertyType") propertyType: String? = null,
+    ): DealsResponse
+
+    /** Deals across the whole settlement (city/town) containing the polygon. */
+    @GET("api/real-estate/settlement-deals/{polygonId}")
+    suspend fun settlementDeals(
+        @Path("polygonId") polygonId: String,
+        @Query("limit") limit: Int,
+        @Query("offset") offset: Int,
+        @Query("startDate") startDate: String? = null,
+        @Query("endDate") endDate: String? = null,
+        @Query("roomNums") roomNums: String? = null,
+        @Query("propertyType") propertyType: String? = null,
     ): DealsResponse
 }

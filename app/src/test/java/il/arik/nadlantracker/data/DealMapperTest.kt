@@ -29,6 +29,7 @@ class DealMapperTest {
         assertEquals(9_600_000L, first.priceIls)
         assertEquals("רנ\"ק 12", first.address) // house number "12.0" normalized
         assertEquals("תל אביב-יפו", first.city)
+        assertEquals("6902/274/7", first.gushHelka)
         assertNotNull(mapped.first().x) // parcel coordinate parsed from shape
     }
 

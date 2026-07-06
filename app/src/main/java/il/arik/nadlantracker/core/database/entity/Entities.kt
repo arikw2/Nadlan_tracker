@@ -26,6 +26,7 @@ data class DealEntity(
     val city: String?,
     val neighborhood: String?,
     val floor: String?,
+    val gushHelka: String?,
 )
 
 @Entity(tableName = "cache_meta")

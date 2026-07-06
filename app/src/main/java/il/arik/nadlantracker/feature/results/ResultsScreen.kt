@@ -203,9 +203,14 @@ private fun DealCard(deal: Deal) {
                     DetailChip(stringResource(R.string.deal_price_per_sqm, Formatters.compactPrice(it)))
                 }
             }
-            deal.propertyType?.let {
+            val secondaryLine = listOfNotNull(
+                deal.propertyType,
+                deal.neighborhood,
+                deal.gushHelka?.let { stringResource(R.string.deal_gush_helka, it) },
+            ).joinToString(" · ")
+            if (secondaryLine.isNotEmpty()) {
                 Text(
-                    it,
+                    secondaryLine,
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )

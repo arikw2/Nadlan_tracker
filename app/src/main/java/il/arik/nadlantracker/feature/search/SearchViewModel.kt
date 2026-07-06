@@ -20,7 +20,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 
-enum class SearchScope { STREET, NEIGHBORHOOD, RADIUS }
+enum class SearchScope { STREET, NEIGHBORHOOD, SETTLEMENT, RADIUS }
 
 data class SearchUiState(
     val searchText: String = "",
@@ -100,16 +100,22 @@ class SearchViewModel(
                     displayName = candidate.displayText,
                     filters = state.filters,
                 )
-                SearchScope.STREET, SearchScope.NEIGHBORHOOD -> {
+                SearchScope.STREET, SearchScope.NEIGHBORHOOD, SearchScope.SETTLEMENT -> {
+                    // Street matching only helps street scope; for neighborhood
+                    // or settlement any nearby parcel anchors the query.
+                    val preferText = candidate.displayText.takeIf { state.scope == SearchScope.STREET }
                     val polygonId = runCatching {
-                        geoRepository.resolvePolygonId(candidate.x, candidate.y, candidate.displayText)
+                        geoRepository.resolvePolygonId(candidate.x, candidate.y, preferText)
                     }.getOrNull()
                     when {
                         polygonId == null -> null
                         state.scope == SearchScope.STREET -> SearchQuery.Street(
                             polygonId, candidate.displayText, state.filters,
                         )
-                        else -> SearchQuery.Neighborhood(
+                        state.scope == SearchScope.NEIGHBORHOOD -> SearchQuery.Neighborhood(
+                            polygonId, candidate.displayText, state.filters,
+                        )
+                        else -> SearchQuery.Settlement(
                             polygonId, candidate.displayText, state.filters,
                         )
                     }

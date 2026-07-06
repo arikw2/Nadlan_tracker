@@ -28,6 +28,8 @@ import org.robolectric.RobolectricTestRunner
 /** Configurable fake — no mocking library needed. */
 private class FakeGovMapApi : GovMapApi {
     var streetDealsCalls = 0
+    var lastStartDate: String? = null
+    var lastEndDate: String? = null
     var failNetwork = false
     var streetResponse: DealsResponse = DealsResponse()
 
@@ -37,15 +39,42 @@ private class FakeGovMapApi : GovMapApi {
     override suspend fun dealsByRadius(point: String, radius: Int): List<RadiusBuildingDto> =
         emptyList()
 
-    override suspend fun streetDeals(polygonId: String, limit: Int, offset: Int): DealsResponse {
+    override suspend fun streetDeals(
+        polygonId: String,
+        limit: Int,
+        offset: Int,
+        startDate: String?,
+        endDate: String?,
+        roomNums: String?,
+        propertyType: String?,
+    ): DealsResponse {
         streetDealsCalls++
+        lastStartDate = startDate
+        lastEndDate = endDate
         if (failNetwork) throw IOException("network down")
         // Single-page behaviour: only the first page has data.
         return if (offset == 0) streetResponse else DealsResponse()
     }
 
-    override suspend fun neighborhoodDeals(polygonId: String, limit: Int, offset: Int): DealsResponse =
-        streetDeals(polygonId, limit, offset)
+    override suspend fun neighborhoodDeals(
+        polygonId: String,
+        limit: Int,
+        offset: Int,
+        startDate: String?,
+        endDate: String?,
+        roomNums: String?,
+        propertyType: String?,
+    ): DealsResponse = streetDeals(polygonId, limit, offset, startDate, endDate, roomNums, propertyType)
+
+    override suspend fun settlementDeals(
+        polygonId: String,
+        limit: Int,
+        offset: Int,
+        startDate: String?,
+        endDate: String?,
+        roomNums: String?,
+        propertyType: String?,
+    ): DealsResponse = streetDeals(polygonId, limit, offset, startDate, endDate, roomNums, propertyType)
 }
 
 @RunWith(RobolectricTestRunner::class)
@@ -143,13 +172,26 @@ class DealsRepositoryTest {
     }
 
     @Test
-    fun `scope hash ignores filters and display name but not scope`() {
+    fun `scope hash ignores local filters and display name but not scope or dates`() {
         val base = repository.scopeHash(query)
 
         assertEquals(base, repository.scopeHash(query.copy(filters = DealFilters(roomsMin = 3.0))))
         assertEquals(base, repository.scopeHash(query.copy(displayName = "אחר")))
         assertTrue(base != repository.scopeHash(query.copy(polygonId = "1-1")))
         assertTrue(base != repository.scopeHash(SearchQuery.Neighborhood("6902-274", "x")))
+        assertTrue(base != repository.scopeHash(SearchQuery.Settlement("6902-274", "x")))
+        // Dates are applied server-side, so they define what was fetched.
+        assertTrue(base != repository.scopeHash(query.copy(filters = DealFilters(fromYearMonth = "2024-01"))))
+    }
+
+    @Test
+    fun `date filters are sent server-side as full dates`() = runTest {
+        repository.search(
+            query.copy(filters = DealFilters(fromYearMonth = "2024-01", toYearMonth = "2024-06")),
+        )
+
+        assertEquals("2024-01-01", api.lastStartDate)
+        assertEquals("2024-06-30", api.lastEndDate)
     }
 
     @Test

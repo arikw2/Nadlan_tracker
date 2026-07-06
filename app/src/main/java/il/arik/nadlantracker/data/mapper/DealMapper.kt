@@ -36,6 +36,7 @@ object DealMapper {
             city = dto.settlementNameHeb?.trim(),
             neighborhood = dto.neighborhood?.trim()?.takeUnless { it.isEmpty() },
             floor = dto.floorNo?.trim()?.takeUnless { it.isEmpty() },
+            gushHelka = buildGushHelka(dto.gushNum, dto.parcelNum, dto.subParcelNum),
         )
         return MappedDeal(deal, coordinate?.first, coordinate?.second)
     }
@@ -95,6 +96,7 @@ object DealMapper {
         city = deal.city,
         neighborhood = deal.neighborhood,
         floor = deal.floor,
+        gushHelka = deal.gushHelka,
     )
 
     fun fromEntity(entity: DealEntity): Deal = Deal(
@@ -107,6 +109,7 @@ object DealMapper {
         city = entity.city,
         neighborhood = entity.neighborhood,
         floor = entity.floor,
+        gushHelka = entity.gushHelka,
     )
 
     fun candidateFromDto(dto: AutocompleteResultDto): LocationCandidate? {
@@ -124,6 +127,15 @@ object DealMapper {
         val content = raw?.contentOrNull ?: return null
         val digits = content.replace(Regex("[^0-9.]"), "")
         return digits.toDoubleOrNull()?.toLong()
+    }
+
+    private fun buildGushHelka(gush: Long?, parcel: Long?, subParcel: Long?): String? {
+        if (gush == null || gush <= 0) return null
+        return buildString {
+            append(gush)
+            if (parcel != null && parcel > 0) append('/').append(parcel)
+            if (parcel != null && subParcel != null && subParcel > 0) append('/').append(subParcel)
+        }
     }
 
     private fun buildAddress(street: String?, houseNum: String?): String? {

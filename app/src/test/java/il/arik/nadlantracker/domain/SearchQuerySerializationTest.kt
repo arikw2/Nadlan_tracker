@@ -19,6 +19,7 @@ class SearchQuerySerializationTest {
         val queries = listOf(
             SearchQuery.Street("6902-274", "רנ\"ק, תל אביב", filters),
             SearchQuery.Neighborhood("6902-274", "הצפון הישן", filters),
+            SearchQuery.Settlement("6902-274", "תל אביב-יפו", filters),
             SearchQuery.Radius(3871101.9, 3774606.0, 250, "סביב דיזנגוף", filters),
         )
         queries.forEach { assertEquals(it, roundTrip(it)) }

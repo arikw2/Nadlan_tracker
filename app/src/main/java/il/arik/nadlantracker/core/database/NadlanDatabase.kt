@@ -2,6 +2,8 @@ package il.arik.nadlantracker.core.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import il.arik.nadlantracker.core.database.dao.CacheMetaDao
 import il.arik.nadlantracker.core.database.dao.DealDao
 import il.arik.nadlantracker.core.database.dao.FavoriteDao
@@ -18,7 +20,7 @@ import il.arik.nadlantracker.core.database.entity.IndexPointEntity
         FavoriteSearchEntity::class,
         IndexPointEntity::class,
     ],
-    version = 1,
+    version = 2,
     exportSchema = true,
 )
 abstract class NadlanDatabase : RoomDatabase() {
@@ -26,4 +28,13 @@ abstract class NadlanDatabase : RoomDatabase() {
     abstract fun cacheMetaDao(): CacheMetaDao
     abstract fun favoriteDao(): FavoriteDao
     abstract fun indexDao(): IndexDao
+
+    companion object {
+        /** v2 adds the land-registry reference to cached deals. */
+        val MIGRATION_1_2 = object : Migration(1, 2) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("ALTER TABLE deals ADD COLUMN gushHelka TEXT")
+            }
+        }
+    }
 }

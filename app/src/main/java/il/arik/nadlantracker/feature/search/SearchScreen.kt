@@ -93,6 +93,7 @@ fun SearchScreen(
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             ScopeChip(state, viewModel, SearchScope.STREET, R.string.search_scope_street)
             ScopeChip(state, viewModel, SearchScope.NEIGHBORHOOD, R.string.search_scope_neighborhood)
+            ScopeChip(state, viewModel, SearchScope.SETTLEMENT, R.string.search_scope_settlement)
             ScopeChip(state, viewModel, SearchScope.RADIUS, R.string.search_scope_radius)
         }
 
