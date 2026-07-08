@@ -63,6 +63,34 @@ fun TrendLineChart(points: List<TrendPoint>, modifier: Modifier = Modifier) {
     )
 }
 
+/** Colors used for multi-series lines — the legend must reuse them in order. */
+@Composable
+fun trendSeriesColors(): List<androidx.compose.ui.graphics.Color> =
+    com.patrykandpatrick.vico.compose.common.vicoTheme.lineCartesianLayerColors
+
+@Composable
+fun TrendMultiLineChart(seriesList: List<List<TrendPoint>>, modifier: Modifier = Modifier) {
+    val modelProducer = remember { CartesianChartModelProducer() }
+    LaunchedEffect(seriesList) {
+        modelProducer.runTransaction {
+            lineSeries {
+                seriesList.forEach { points ->
+                    series(points.map { it.xValue() }, points.map { it.value })
+                }
+            }
+        }
+    }
+    CartesianChartHost(
+        chart = rememberCartesianChart(
+            rememberLineCartesianLayer(),
+            startAxis = VerticalAxis.rememberStart(valueFormatter = compactStartAxisFormatter),
+            bottomAxis = HorizontalAxis.rememberBottom(valueFormatter = bottomAxisFormatter),
+        ),
+        modelProducer = modelProducer,
+        modifier = modifier.fillMaxWidth().height(220.dp),
+    )
+}
+
 @Composable
 fun TrendColumnChart(points: List<TrendPoint>, modifier: Modifier = Modifier) {
     val modelProducer = remember { CartesianChartModelProducer() }

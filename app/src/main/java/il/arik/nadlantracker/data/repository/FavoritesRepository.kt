@@ -20,21 +20,33 @@ class FavoritesRepository(
         val query: SearchQuery?,
         val createdAtEpochMs: Long,
         val lastRunAtEpochMs: Long?,
+        val alertsEnabled: Boolean = false,
+        val lastSeenCount: Int? = null,
     )
 
     fun observeAll(): Flow<List<Favorite>> = dao.observeAll().map { entities ->
-        entities.map { entity ->
-            Favorite(
-                id = entity.id,
-                displayName = entity.displayName,
-                query = runCatching {
-                    json.decodeFromString(SearchQuery.serializer(), entity.queryJson)
-                }.getOrNull(),
-                createdAtEpochMs = entity.createdAtEpochMs,
-                lastRunAtEpochMs = entity.lastRunAtEpochMs,
-            )
-        }
+        entities.map(::toFavorite)
     }
+
+    suspend fun alertEnabledFavorites(): List<Favorite> =
+        dao.getAlertEnabled().map(::toFavorite)
+
+    private fun toFavorite(entity: il.arik.nadlantracker.core.database.entity.FavoriteSearchEntity) =
+        Favorite(
+            id = entity.id,
+            displayName = entity.displayName,
+            query = runCatching {
+                json.decodeFromString(SearchQuery.serializer(), entity.queryJson)
+            }.getOrNull(),
+            createdAtEpochMs = entity.createdAtEpochMs,
+            lastRunAtEpochMs = entity.lastRunAtEpochMs,
+            alertsEnabled = entity.alertsEnabled,
+            lastSeenCount = entity.lastSeenCount,
+        )
+
+    suspend fun setAlertsEnabled(id: Long, enabled: Boolean) = dao.setAlertsEnabled(id, enabled)
+
+    suspend fun updateLastSeenCount(id: Long, count: Int) = dao.updateLastSeenCount(id, count)
 
     suspend fun save(displayName: String, query: SearchQuery): Long = dao.insert(
         FavoriteSearchEntity(

@@ -14,6 +14,10 @@ object NavRoutes {
     @Serializable
     object Favorites
 
+    /** Two Json-encoded SearchQuery values to overlay on shared charts. */
+    @Serializable
+    data class Compare(val queryJsonA: String, val queryJsonB: String)
+
     @Serializable
     object Macro
 

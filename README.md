@@ -9,6 +9,8 @@ Android app (Hebrew, RTL) for tracking Israeli real-estate data straight from of
 - **מפה** — every search result also renders on an OpenStreetMap view (osmdroid, no API key), each deal a dot colored by ₪/m² quintile from green (cheap) to red (expensive), using the parcel centroid that govmap attaches to every deal.
 - **מדדי הדיור** — the CBS dwelling-price index (40010) *and* rent index (120460) from [api.cbs.gov.il](https://api.cbs.gov.il), with 5y/10y/full-history views and latest/YoY/MoM stats — buy vs. rent trends side by side.
 - **מועדפים** — save any search and re-run it later with one tap to get fresh data.
+- **השוואת אזורים** — pick two saved searches and overlay their median-price and ₪/m² trend lines on shared charts.
+- **התראות עסקאות** — toggle the bell on a favorite and a daily background check (WorkManager) notifies you when new transactions are registered in that area.
 - **Offline-friendly** — results are cached in Room for 24h; when the government source is down or rate-limits, the app serves the cached data with a clear banner.
 
 ## Architecture

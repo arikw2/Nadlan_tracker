@@ -29,6 +29,10 @@ class FavoritesViewModel(
         viewModelScope.launch { repository.delete(id) }
     }
 
+    fun setAlertsEnabled(id: Long, enabled: Boolean) {
+        viewModelScope.launch { repository.setAlertsEnabled(id, enabled) }
+    }
+
     companion object {
         val Factory = viewModelFactory {
             initializer { FavoritesViewModel(appContainer().favoritesRepository) }

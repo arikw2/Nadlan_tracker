@@ -47,6 +47,10 @@ data class FavoriteSearchEntity(
     val queryJson: String,
     val createdAtEpochMs: Long,
     val lastRunAtEpochMs: Long?,
+    /** Daily background check notifies when new deals appear in this scope. */
+    val alertsEnabled: Boolean = false,
+    /** Deal count at the last alert check — the "new deals" baseline. */
+    val lastSeenCount: Int? = null,
 )
 
 @Entity(tableName = "index_points", primaryKeys = ["seriesCode", "period"])

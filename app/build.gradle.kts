@@ -77,6 +77,7 @@ dependencies {
 
     implementation(libs.vico.compose.m3)
     implementation(libs.osmdroid.android)
+    implementation(libs.androidx.work.runtime)
 
     debugImplementation(libs.androidx.compose.ui.tooling)
 

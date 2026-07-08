@@ -23,6 +23,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import il.arik.nadlantracker.R
+import il.arik.nadlantracker.feature.compare.CompareScreen
 import il.arik.nadlantracker.feature.favorites.FavoritesScreen
 import il.arik.nadlantracker.feature.macro.MacroScreen
 import il.arik.nadlantracker.feature.results.ResultsScreen
@@ -100,6 +101,17 @@ fun NadlanNavHost() {
                             NavRoutes.Results(queryJson, forceRefresh = true, favoriteId = favoriteId)
                         )
                     },
+                    onCompare = { queryJsonA, queryJsonB ->
+                        navController.navigate(NavRoutes.Compare(queryJsonA, queryJsonB))
+                    },
+                )
+            }
+            composable<NavRoutes.Compare> { entry ->
+                val route = entry.toRoute<NavRoutes.Compare>()
+                CompareScreen(
+                    queryJsonA = route.queryJsonA,
+                    queryJsonB = route.queryJsonB,
+                    onBack = { navController.popBackStack() },
                 )
             }
             composable<NavRoutes.Macro> { MacroScreen() }

@@ -58,6 +58,15 @@ interface FavoriteDao {
     @Query("UPDATE favorite_searches SET lastRunAtEpochMs = :runAtEpochMs WHERE id = :id")
     suspend fun markRun(id: Long, runAtEpochMs: Long)
 
+    @Query("UPDATE favorite_searches SET alertsEnabled = :enabled WHERE id = :id")
+    suspend fun setAlertsEnabled(id: Long, enabled: Boolean)
+
+    @Query("UPDATE favorite_searches SET lastSeenCount = :count WHERE id = :id")
+    suspend fun updateLastSeenCount(id: Long, count: Int)
+
+    @Query("SELECT * FROM favorite_searches WHERE alertsEnabled = 1")
+    suspend fun getAlertEnabled(): List<FavoriteSearchEntity>
+
     @Query("DELETE FROM favorite_searches WHERE id = :id")
     suspend fun delete(id: Long)
 }

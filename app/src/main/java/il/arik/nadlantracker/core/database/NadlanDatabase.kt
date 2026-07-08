@@ -20,7 +20,7 @@ import il.arik.nadlantracker.core.database.entity.IndexPointEntity
         FavoriteSearchEntity::class,
         IndexPointEntity::class,
     ],
-    version = 3,
+    version = 4,
     exportSchema = true,
 )
 abstract class NadlanDatabase : RoomDatabase() {
@@ -44,5 +44,17 @@ abstract class NadlanDatabase : RoomDatabase() {
                 db.execSQL("ALTER TABLE deals ADD COLUMN y REAL")
             }
         }
+
+        /** v4 adds deal-alert state to favorites. */
+        val MIGRATION_3_4 = object : Migration(3, 4) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL(
+                    "ALTER TABLE favorite_searches ADD COLUMN alertsEnabled INTEGER NOT NULL DEFAULT 0"
+                )
+                db.execSQL("ALTER TABLE favorite_searches ADD COLUMN lastSeenCount INTEGER")
+            }
+        }
+
+        val ALL_MIGRATIONS = arrayOf(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)
     }
 }

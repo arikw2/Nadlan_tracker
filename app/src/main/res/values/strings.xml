@@ -69,6 +69,17 @@
     <string name="favorites_delete">מחיקה</string>
     <string name="favorites_broken">חיפוש שמור מגרסה ישנה — יש למחוק</string>
 
+    <!-- Compare -->
+    <string name="compare_title">השוואת אזורים</string>
+    <string name="compare_mode">השוואה</string>
+    <string name="compare_pick_two">בחרו שני חיפושים שמורים להשוואה</string>
+    <string name="compare_button">השוו את שני האזורים</string>
+
+    <!-- Alerts -->
+    <string name="alerts_toggle">התראות על עסקאות חדשות</string>
+    <string name="alerts_channel_name">עסקאות חדשות</string>
+    <string name="alerts_new_deals">%1$d עסקאות חדשות באזור שאתם עוקבים אחריו</string>
+
     <!-- Macro screen -->
     <string name="macro_title">מדדי הדיור</string>
     <string name="macro_subtitle">הלשכה המרכזית לסטטיסטיקה</string>

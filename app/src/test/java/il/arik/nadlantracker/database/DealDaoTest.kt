@@ -88,4 +88,28 @@ class DealDaoTest {
         dao.delete(id)
         assertEquals(0, dao.observeAll().first().size)
     }
+
+    @Test
+    fun `alert toggle and baseline round trip`() = runTest {
+        val dao = db.favoriteDao()
+        val id = dao.insert(
+            FavoriteSearchEntity(
+                displayName = "רנ\"ק",
+                queryJson = "{}",
+                createdAtEpochMs = 1,
+                lastRunAtEpochMs = null,
+            )
+        )
+        assertEquals(0, dao.getAlertEnabled().size)
+
+        dao.setAlertsEnabled(id, true)
+        dao.updateLastSeenCount(id, 42)
+
+        val tracked = dao.getAlertEnabled().single()
+        assertEquals(id, tracked.id)
+        assertEquals(42, tracked.lastSeenCount)
+
+        dao.setAlertsEnabled(id, false)
+        assertEquals(0, dao.getAlertEnabled().size)
+    }
 }
