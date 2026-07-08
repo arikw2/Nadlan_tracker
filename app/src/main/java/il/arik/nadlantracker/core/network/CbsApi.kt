@@ -23,5 +23,8 @@ interface CbsApi {
 
     companion object {
         const val DWELLING_PRICE_INDEX_CODE = 40010L
+
+        /** CPI component: private + public + supervised long-term rent. */
+        const val RENT_INDEX_CODE = 120460L
     }
 }

@@ -6,7 +6,8 @@ Android app (Hebrew, RTL) for tracking Israeli real-estate data straight from of
 
 - **חיפוש עסקאות** — search real transactions by street, neighborhood, whole settlement, or radius around an address, using the public govmap.gov.il API that backs [nadlan.gov.il](https://www.nadlan.gov.il) (Israel Tax Authority data). Filter by period and room count; deal cards show price, ₪/m², rooms, floor, property type, neighborhood, and גוש/חלקה.
 - **מגמות** — charts per search: median price by month, median ₪/m², and monthly deal counts.
-- **מדד הדיור** — the CBS dwelling-price index (code 40010) from [api.cbs.gov.il](https://api.cbs.gov.il), with 5y/10y/full-history views and latest/YoY/MoM stats.
+- **מפה** — every search result also renders on an OpenStreetMap view (osmdroid, no API key), each deal a dot colored by ₪/m² quintile from green (cheap) to red (expensive), using the parcel centroid that govmap attaches to every deal.
+- **מדדי הדיור** — the CBS dwelling-price index (40010) *and* rent index (120460) from [api.cbs.gov.il](https://api.cbs.gov.il), with 5y/10y/full-history views and latest/YoY/MoM stats — buy vs. rent trends side by side.
 - **מועדפים** — save any search and re-run it later with one tap to get fresh data.
 - **Offline-friendly** — results are cached in Room for 24h; when the government source is down or rate-limits, the app serves the cached data with a clear banner.
 

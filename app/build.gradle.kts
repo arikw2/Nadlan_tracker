@@ -76,6 +76,7 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
 
     implementation(libs.vico.compose.m3)
+    implementation(libs.osmdroid.android)
 
     debugImplementation(libs.androidx.compose.ui.tooling)
 

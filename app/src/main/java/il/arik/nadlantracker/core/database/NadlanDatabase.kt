@@ -20,7 +20,7 @@ import il.arik.nadlantracker.core.database.entity.IndexPointEntity
         FavoriteSearchEntity::class,
         IndexPointEntity::class,
     ],
-    version = 2,
+    version = 3,
     exportSchema = true,
 )
 abstract class NadlanDatabase : RoomDatabase() {
@@ -34,6 +34,14 @@ abstract class NadlanDatabase : RoomDatabase() {
         val MIGRATION_1_2 = object : Migration(1, 2) {
             override fun migrate(db: SupportSQLiteDatabase) {
                 db.execSQL("ALTER TABLE deals ADD COLUMN gushHelka TEXT")
+            }
+        }
+
+        /** v3 adds the parcel centroid for the map view. */
+        val MIGRATION_2_3 = object : Migration(2, 3) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("ALTER TABLE deals ADD COLUMN x REAL")
+                db.execSQL("ALTER TABLE deals ADD COLUMN y REAL")
             }
         }
     }

@@ -58,13 +58,6 @@ fun MacroScreen(viewModel: MacroViewModel = viewModel(factory = MacroViewModel.F
 private fun MacroContent(data: MacroUiState.Data) {
     var periodYears by remember { mutableIntStateOf(10) }
 
-    val visiblePoints = remember(data.series, periodYears) {
-        val points = data.series.points
-        if (periodYears <= 0) points
-        else points.takeLast(periodYears * 12)
-    }
-    val latest = data.series.points.lastOrNull()
-
     Column(
         Modifier
             .fillMaxSize()
@@ -87,14 +80,40 @@ private fun MacroContent(data: MacroUiState.Data) {
             )
         }
 
-        latest?.let { StatRow(it) }
-
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             PeriodChip(periodYears == 5, R.string.macro_period_5y) { periodYears = 5 }
             PeriodChip(periodYears == 10, R.string.macro_period_10y) { periodYears = 10 }
             PeriodChip(periodYears <= 0, R.string.macro_period_all) { periodYears = 0 }
         }
 
+        IndexSection(
+            title = stringResource(R.string.macro_prices_section),
+            series = data.dwellingSeries,
+            periodYears = periodYears,
+        )
+
+        data.rentSeries?.let { rent ->
+            IndexSection(
+                title = stringResource(R.string.macro_rent_section),
+                series = rent,
+                periodYears = periodYears,
+            )
+        }
+    }
+}
+
+@Composable
+private fun IndexSection(
+    title: String,
+    series: il.arik.nadlantracker.domain.model.IndexSeries,
+    periodYears: Int,
+) {
+    val visiblePoints = remember(series, periodYears) {
+        if (periodYears <= 0) series.points else series.points.takeLast(periodYears * 12)
+    }
+    Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+        Text(title, style = MaterialTheme.typography.titleMedium)
+        series.points.lastOrNull()?.let { StatRow(it) }
         if (visiblePoints.size >= 2) {
             TrendLineChart(
                 visiblePoints.map { TrendPoint(it.period, it.value, 1) },

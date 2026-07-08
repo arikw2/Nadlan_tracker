@@ -24,6 +24,9 @@ data class Deal(
     val floor: String?,
     /** Land-registry reference: "גוש/חלקה[/תת-חלקה]", e.g. "6902/274/7". */
     val gushHelka: String? = null,
+    /** Parcel centroid in EPSG:3857 (Web Mercator) — for map display. */
+    val x: Double? = null,
+    val y: Double? = null,
 ) {
     val pricePerSqm: Double?
         get() = areaSqm?.takeIf { it > 0 }?.let { priceIls / it }

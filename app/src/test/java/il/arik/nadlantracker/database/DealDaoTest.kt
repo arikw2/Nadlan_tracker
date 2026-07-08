@@ -33,6 +33,8 @@ class DealDaoTest {
         neighborhood = null,
         floor = null,
         gushHelka = null,
+        x = null,
+        y = null,
     )
 
     @Before

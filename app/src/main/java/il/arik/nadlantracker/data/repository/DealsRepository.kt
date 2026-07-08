@@ -93,9 +93,7 @@ class DealsRepository(
             }
             is SearchQuery.Radius -> fetchRadius(query, start, end)
         }
-        val exact = mapped
-            .map { it.deal }
-            .distinctBy(DealMapper::dealKey)
+        val exact = mapped.distinctBy(DealMapper::dealKey)
         return DealMapper.dedupeNearDuplicates(exact)
     }
 
@@ -115,7 +113,7 @@ class DealsRepository(
         query: SearchQuery.Radius,
         start: String?,
         end: String?,
-    ): List<DealMapper.MappedDeal> {
+    ): List<Deal> {
         val buildings = api.dealsByRadius("${query.x},${query.y}", query.radiusMeters)
         val streetPolygons = buildings
             .filter { it.polygonId != null }
@@ -127,16 +125,16 @@ class DealsRepository(
             .flatMap { polygonId ->
                 pageAll { limit, offset -> api.streetDeals(polygonId, limit, offset, start, end) }
             }
-            .filter { mapped ->
-                mapped.x != null && mapped.y != null &&
-                    Wkt.approximateMeters(mapped.x, mapped.y, query.x, query.y) <= query.radiusMeters
+            .filter { deal ->
+                deal.x != null && deal.y != null &&
+                    Wkt.approximateMeters(deal.x, deal.y, query.x, query.y) <= query.radiusMeters
             }
     }
 
     private suspend fun pageAll(
         fetchPage: suspend (limit: Int, offset: Int) -> DealsResponse,
-    ): List<DealMapper.MappedDeal> {
-        val result = mutableListOf<DealMapper.MappedDeal>()
+    ): List<Deal> {
+        val result = mutableListOf<Deal>()
         var offset = 0
         while (offset < MAX_ROWS) {
             val page = fetchPage(PAGE_SIZE, offset)

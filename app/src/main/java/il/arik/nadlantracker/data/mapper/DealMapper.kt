@@ -17,16 +17,13 @@ import kotlinx.serialization.json.contentOrNull
  */
 object DealMapper {
 
-    /** Deal plus its parcel coordinate, when the row carried a shape. */
-    data class MappedDeal(val deal: Deal, val x: Double?, val y: Double?)
-
-    fun fromDto(dto: DealDto): MappedDeal? {
+    fun fromDto(dto: DealDto): Deal? {
         val date = parseDate(dto.dealDate) ?: return null
         val price = parseAmount(dto.dealAmount) ?: return null
         if (price <= 0) return null
 
         val coordinate = Wkt.firstCoordinate(dto.shape)
-        val deal = Deal(
+        return Deal(
             date = date,
             priceIls = price,
             rooms = dto.assetRoomNum?.takeIf { it > 0 },
@@ -37,8 +34,9 @@ object DealMapper {
             neighborhood = dto.neighborhood?.trim()?.takeUnless { it.isEmpty() },
             floor = dto.floorNo?.trim()?.takeUnless { it.isEmpty() },
             gushHelka = buildGushHelka(dto.gushNum, dto.parcelNum, dto.subParcelNum),
+            x = coordinate?.first,
+            y = coordinate?.second,
         )
-        return MappedDeal(deal, coordinate?.first, coordinate?.second)
     }
 
     /**
@@ -97,6 +95,8 @@ object DealMapper {
         neighborhood = deal.neighborhood,
         floor = deal.floor,
         gushHelka = deal.gushHelka,
+        x = deal.x,
+        y = deal.y,
     )
 
     fun fromEntity(entity: DealEntity): Deal = Deal(
@@ -110,6 +110,8 @@ object DealMapper {
         neighborhood = entity.neighborhood,
         floor = entity.floor,
         gushHelka = entity.gushHelka,
+        x = entity.x,
+        y = entity.y,
     )
 
     fun candidateFromDto(dto: AutocompleteResultDto): LocationCandidate? {

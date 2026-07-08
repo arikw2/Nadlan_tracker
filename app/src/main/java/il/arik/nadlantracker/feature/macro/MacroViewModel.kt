@@ -14,7 +14,14 @@ import kotlinx.coroutines.launch
 
 sealed interface MacroUiState {
     data object Loading : MacroUiState
-    data class Data(val series: IndexSeries, val isStale: Boolean) : MacroUiState
+
+    data class Data(
+        val dwellingSeries: IndexSeries,
+        /** Null when the rent series failed to load — prices still render. */
+        val rentSeries: IndexSeries?,
+        val isStale: Boolean,
+    ) : MacroUiState
+
     data object Error : MacroUiState
 }
 
@@ -31,8 +38,13 @@ class MacroViewModel(private val repository: CbsRepository) : ViewModel() {
         _uiState.value = MacroUiState.Loading
         viewModelScope.launch {
             try {
-                val result = repository.dwellingIndex(forceRefresh)
-                _uiState.value = MacroUiState.Data(result.series, result.isStale)
+                val dwelling = repository.dwellingIndex(forceRefresh)
+                val rent = runCatching { repository.rentIndex(forceRefresh) }.getOrNull()
+                _uiState.value = MacroUiState.Data(
+                    dwellingSeries = dwelling.series,
+                    rentSeries = rent?.series,
+                    isStale = dwelling.isStale,
+                )
             } catch (e: Exception) {
                 if (e is kotlinx.coroutines.CancellationException) throw e
                 _uiState.value = MacroUiState.Error

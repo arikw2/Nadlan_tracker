@@ -26,4 +26,15 @@ object Wkt {
     }
 
     private const val ISRAEL_MERCATOR_SCALE = 0.852
+
+    /** EPSG:3857 (Web Mercator) → WGS84 (latitude, longitude) degrees. */
+    fun toLatLon(x: Double, y: Double): Pair<Double, Double> {
+        val lon = x / EARTH_HALF_CIRCUMFERENCE * 180.0
+        val lat = Math.toDegrees(
+            2 * Math.atan(Math.exp(y / EARTH_HALF_CIRCUMFERENCE * Math.PI)) - Math.PI / 2
+        )
+        return lat to lon
+    }
+
+    private const val EARTH_HALF_CIRCUMFERENCE = 20037508.342789244
 }

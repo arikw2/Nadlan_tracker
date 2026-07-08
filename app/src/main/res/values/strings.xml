@@ -37,6 +37,10 @@
     <!-- Results screen -->
     <string name="results_tab_deals">עסקאות</string>
     <string name="results_tab_trends">מגמות</string>
+    <string name="results_tab_map">מפה</string>
+    <string name="map_no_coordinates">אין נתוני מיקום לעסקאות האלה</string>
+    <string name="map_legend_cheap">זול</string>
+    <string name="map_legend_expensive">יקר (₪/מ״ר)</string>
     <string name="results_empty">אין עסקאות תואמות. נסו להרחיב את הסינון.</string>
     <string name="results_stale_banner">המקור הממשלתי לא זמין כרגע — מוצגים נתונים שמורים</string>
     <string name="results_error">לא הצלחנו להביא נתונים. בדקו את החיבור ונסו שוב.</string>
@@ -66,8 +70,10 @@
     <string name="favorites_broken">חיפוש שמור מגרסה ישנה — יש למחוק</string>
 
     <!-- Macro screen -->
-    <string name="macro_title">מדד מחירי הדירות</string>
+    <string name="macro_title">מדדי הדיור</string>
     <string name="macro_subtitle">הלשכה המרכזית לסטטיסטיקה</string>
+    <string name="macro_prices_section">מדד מחירי הדירות (בעלות)</string>
+    <string name="macro_rent_section">מדד שכר הדירה (שכירות)</string>
     <string name="macro_latest_value">ערך אחרון</string>
     <string name="macro_yoy">שינוי שנתי</string>
     <string name="macro_mom">שינוי חודשי</string>

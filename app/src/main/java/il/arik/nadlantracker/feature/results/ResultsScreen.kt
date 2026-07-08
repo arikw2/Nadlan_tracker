@@ -142,11 +142,17 @@ private fun ResultsContent(data: ResultsUiState.Data) {
             onClick = { selectedTab = 1 },
             text = { Text(stringResource(R.string.results_tab_trends)) },
         )
+        Tab(
+            selected = selectedTab == 2,
+            onClick = { selectedTab = 2 },
+            text = { Text(stringResource(R.string.results_tab_map)) },
+        )
     }
 
     when (selectedTab) {
         0 -> DealListTab(data)
         1 -> TrendsTab(data)
+        2 -> MapTab(data)
     }
 }
 

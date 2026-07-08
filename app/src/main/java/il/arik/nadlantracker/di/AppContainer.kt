@@ -17,7 +17,7 @@ class AppContainer(appContext: Context) {
 
     private val database: NadlanDatabase = Room
         .databaseBuilder(appContext, NadlanDatabase::class.java, "nadlan.db")
-        .addMigrations(NadlanDatabase.MIGRATION_1_2)
+        .addMigrations(NadlanDatabase.MIGRATION_1_2, NadlanDatabase.MIGRATION_2_3)
         // Last resort for future unplanned schema jumps — favorites are the
         // only precious table, so keep migrations for every release anyway.
         .fallbackToDestructiveMigration(dropAllTables = true)

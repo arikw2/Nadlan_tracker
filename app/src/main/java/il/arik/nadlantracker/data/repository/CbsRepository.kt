@@ -21,43 +21,52 @@ class CbsRepository(
 
     private val lock = Mutex()
 
-    suspend fun dwellingIndex(forceRefresh: Boolean = false): IndexResult = lock.withLock {
-        val cacheKey = "cbs:${CbsApi.DWELLING_PRICE_INDEX_CODE}"
+    suspend fun dwellingIndex(forceRefresh: Boolean = false): IndexResult =
+        indexSeries(CbsApi.DWELLING_PRICE_INDEX_CODE, "מחירי דירות", forceRefresh)
+
+    suspend fun rentIndex(forceRefresh: Boolean = false): IndexResult =
+        indexSeries(CbsApi.RENT_INDEX_CODE, "שכר דירה", forceRefresh)
+
+    suspend fun indexSeries(
+        code: Long,
+        fallbackName: String,
+        forceRefresh: Boolean = false,
+    ): IndexResult = lock.withLock {
+        val cacheKey = "cbs:$code"
         val meta = cacheMetaDao.get(cacheKey)
         val fresh = meta != null && nowMs() - meta.fetchedAtEpochMs < cacheTtlMs
 
         if (meta != null && (fresh && !forceRefresh)) {
-            return@withLock IndexResult(loadCached(), isStale = false)
+            return@withLock IndexResult(loadCached(code, fallbackName), isStale = false)
         }
 
         try {
             var page = 1
-            var name = "מחירי דירות"
+            var name = fallbackName
             while (page <= MAX_PAGES) {
-                val response = api.indexData(CbsApi.DWELLING_PRICE_INDEX_CODE, page = page)
-                val series = response.month.firstOrNull { it.code == CbsApi.DWELLING_PRICE_INDEX_CODE }
+                val response = api.indexData(code, page = page)
+                val series = response.month.firstOrNull { it.code == code }
                     ?: response.month.firstOrNull()
                 series?.name?.let { name = it }
                 val points = series?.date.orEmpty()
-                    .mapNotNull { IndexMapper.toEntity(CbsApi.DWELLING_PRICE_INDEX_CODE, it) }
+                    .mapNotNull { IndexMapper.toEntity(code, it) }
                 indexDao.upsertAll(points)
                 val lastPage = response.paging?.lastPage ?: 1
                 if (page >= lastPage || points.isEmpty()) break
                 page++
             }
             cacheMetaDao.upsert(CacheMetaEntity(cacheKey, nowMs(), 0))
-            IndexResult(loadCached(seriesName = name), isStale = false)
+            IndexResult(loadCached(code, name), isStale = false)
         } catch (e: Exception) {
             if (e is kotlinx.coroutines.CancellationException) throw e
             if (meta == null) throw e
-            IndexResult(loadCached(), isStale = true)
+            IndexResult(loadCached(code, fallbackName), isStale = true)
         }
     }
 
-    private suspend fun loadCached(seriesName: String = "מחירי דירות"): IndexSeries {
-        val points = indexDao.getSeries(CbsApi.DWELLING_PRICE_INDEX_CODE)
-            .map(IndexMapper::fromEntity)
-        return IndexSeries(CbsApi.DWELLING_PRICE_INDEX_CODE, seriesName, points)
+    private suspend fun loadCached(code: Long, seriesName: String): IndexSeries {
+        val points = indexDao.getSeries(code).map(IndexMapper::fromEntity)
+        return IndexSeries(code, seriesName, points)
     }
 
     suspend fun clearCache() {

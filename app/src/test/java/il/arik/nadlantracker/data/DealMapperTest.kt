@@ -24,7 +24,7 @@ class DealMapperTest {
         val mapped = response.data.mapNotNull(DealMapper::fromDto)
 
         assertTrue(mapped.isNotEmpty())
-        val first = mapped.first().deal
+        val first = mapped.first()
         assertEquals(LocalDate.of(2025, 7, 22), first.date)
         assertEquals(9_600_000L, first.priceIls)
         assertEquals("רנ\"ק 12", first.address) // house number "12.0" normalized
@@ -36,7 +36,7 @@ class DealMapperTest {
     @Test
     fun `near-duplicate source records collapse, richer row wins`() {
         val response = json.decodeFromString<DealsResponse>(Fixtures.read("street_deals.json"))
-        val mapped = response.data.mapNotNull(DealMapper::fromDto).map { it.deal }
+        val mapped = response.data.mapNotNull(DealMapper::fromDto)
 
         val deduped = DealMapper.dedupeNearDuplicates(mapped)
 
@@ -61,7 +61,7 @@ class DealMapperTest {
         val response = json.decodeFromString<DealsResponse>(
             """{"data":[{"dealDate":"2024-01-01T00:00:00Z","dealAmount":"1,234,567 ₪"}]}"""
         )
-        assertEquals(1_234_567L, response.data.mapNotNull(DealMapper::fromDto).single().deal.priceIls)
+        assertEquals(1_234_567L, response.data.mapNotNull(DealMapper::fromDto).single().priceIls)
     }
 
     @Test
@@ -97,10 +97,17 @@ class DealMapperTest {
     @Test
     fun `entity round trip preserves the deal`() {
         val deal = json.decodeFromString<DealsResponse>(Fixtures.read("street_deals.json"))
-            .data.mapNotNull(DealMapper::fromDto).first().deal
+            .data.mapNotNull(DealMapper::fromDto).first()
 
         val roundTripped = DealMapper.fromEntity(DealMapper.toEntity("hash", deal))
 
         assertEquals(deal, roundTripped)
+    }
+
+    @Test
+    fun `mercator to wgs84 lands on tel aviv`() {
+        val (lat, lon) = Wkt.toLatLon(3871101.97, 3774606.05)
+        assertEquals(34.77, lon, 0.05)
+        assertEquals(32.06, lat, 0.05)
     }
 }
