@@ -54,6 +54,7 @@
     <string name="deal_floor">קומה %1$s</string>
     <string name="deal_price_per_sqm">%1$s ₪/מ״ר</string>
     <string name="deal_gush_helka">גוש/חלקה %1$s</string>
+    <string name="deal_gov_link">שנת בנייה ופרטים נוספים — nadlan.gov.il ⤴</string>
 
     <!-- Favorite dialog -->
     <string name="favorite_dialog_title">שמירת חיפוש</string>

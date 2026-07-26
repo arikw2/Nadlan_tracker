@@ -1,5 +1,6 @@
 package il.arik.nadlantracker.feature.results
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -177,6 +178,12 @@ private fun DealListTab(data: ResultsUiState.Data) {
     }
 }
 
+/** Official parcel page — shows construction year and building details. */
+private fun govParcelUrl(gushHelka: String): String {
+    val parcelId = gushHelka.split('/').take(2).joinToString("-")
+    return "https://www.nadlan.gov.il/?view=kparcel_all&id=$parcelId&page=deals"
+}
+
 @Composable
 private fun DealCard(deal: Deal) {
     Card(Modifier.fillMaxWidth()) {
@@ -219,6 +226,17 @@ private fun DealCard(deal: Deal) {
                     secondaryLine,
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
+            deal.gushHelka?.let { gushHelka ->
+                val uriHandler = androidx.compose.ui.platform.LocalUriHandler.current
+                Text(
+                    stringResource(R.string.deal_gov_link),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.clickable {
+                        runCatching { uriHandler.openUri(govParcelUrl(gushHelka)) }
+                    },
                 )
             }
         }
