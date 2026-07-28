@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="../_ds/organic-d0353630-edd4-4d03-a1b8-87fc750a2b4a/styles.css">
+<script src="../_ds/organic-d0353630-edd4-4d03-a1b8-87fc750a2b4a/_ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&family=Assistant:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#efe5d2;font-family:"Assistant",system-ui,sans-serif}
+a{color:#8c491a;text-underline-offset:3px}a:hover{color:#b2622d}
+.dv-turn{padding:46px 48px 38px;border-bottom:1px solid rgba(32,30,29,.09);scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 8px}
+.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#201e1d;color:#f5ead8;border-radius:4px;text-decoration:none}
+.dv-tname{font:600 13px/1.2 "Assistant",system-ui,sans-serif;color:#201e1d}
+.dv-tnote{margin:0 0 24px;max-width:760px;font:400 12.5px/1.6 "Assistant",system-ui,sans-serif;color:rgba(32,30,29,.62)}
+.dv-opts{display:flex;flex-wrap:wrap;gap:46px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:11px;scroll-margin-top:16px}
+.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(32,30,29,.09);color:#201e1d;border-radius:5px;text-decoration:none}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11.5px/1.45 "Assistant",system-ui,sans-serif;color:rgba(32,30,29,.6)}
+.dv-olabel b{color:#201e1d;font-weight:700}
+.dv-opt:target .dv-oid{background:#c67139;color:#fff}
+.dv-pair{display:flex;gap:22px;align-items:flex-start;flex-wrap:nowrap}
+.dv-pair>*{flex:none}
+.dv-olabel{max-width:440px}
+.dv-next{margin:28px 0 0;font:12px/1.6 "Assistant",system-ui,sans-serif;color:rgba(32,30,29,.5);max-width:760px}
+.bt-scroll{scrollbar-width:none;-ms-overflow-style:none}
+.bt-scroll::-webkit-scrollbar{display:none}
+@keyframes btDraw{from{stroke-dashoffset:900}to{stroke-dashoffset:0}}
+</style>
+</helmet>
+
+<section class="dv-turn" id="t4">
+<div class="dv-thd"><a class="dv-tid" href="#t4">4</a><span class="dv-tname">Desktop web — designed for the screen, not stretched from the phone</span></div>
+<p class="dv-tnote">The phone makes you choose between the deals, the trend and the map. A 1440px screen doesn't have to: all three are visible at once, and hovering a table row lights its parcel on the map. Comparison stops being a mode — you tick two areas in the rail. This is a different product from the app, which is why I'd build it separately rather than porting Compose to web.</p>
+<div class="dv-opts">
+
+<div class="dv-opt" id="4a">
+<div class="dv-olabel"><a class="dv-oid" href="#4a">4a</a><span>Hover any table row to light its dot on the map, or hover a dot to highlight its row. Sort by any column. Tick two areas in the rail to compare.</span></div>
+<x-import component-from-global-scope="ChromeWindow" from="./browser-window.jsx" width="{{ 1440 }}" height="{{ 900 }}" url="nadlan-tracker.co.il/רמת-אביב-ג" hint-size="1440px,900px">
+<div dir="rtl" style="height:816px;display:flex;flex-direction:column;background:var(--color-bg);color:var(--color-text);font-family:'Assistant',sans-serif;overflow:hidden">
+
+<div style="flex:none;height:62px;display:flex;align-items:center;gap:20px;padding:0 22px;background:var(--color-neutral-100);border-bottom:1px solid var(--color-neutral-300)">
+<div style="display:flex;align-items:center;gap:10px;flex:none">
+<div style="width:32px;height:32px;border-radius:10px;background:var(--color-text);display:flex;align-items:center;justify-content:center;color:var(--color-accent-400)">
+<svg viewBox="0 0 108 108" style="width:19px;height:19px"><path fill="currentColor" transform="matrix(.5 0 0 .5 27 27)" d="M54,22L18,52h9v34h20V64h14v22h20V52h9L54,22z"></path></svg>
+</div>
+<span style="font-family:'Rubik',sans-serif;font-weight:600;font-size:16px">נדל״ן טרקר</span>
+</div>
+<div style="flex:1;max-width:460px;display:flex;align-items:center;gap:10px;background:var(--color-bg);border:1px solid var(--color-neutral-300);border-radius:999px;padding:9px 16px">
+<svg viewBox="0 0 24 24" fill="none" stroke="#82796a" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px;flex:none"><path d="M11 3a8 8 0 1 0 0 16 8 8 0 1 0 0-16"></path><path d="M21 21l-4.35-4.35"></path></svg>
+<span style="flex:1;font-size:14px;color:var(--color-neutral-600)">חיפוש רחוב, שכונה או יישוב</span>
+<span style="font-size:11px;font-weight:700;color:var(--color-neutral-600);background:var(--color-surface);border-radius:6px;padding:3px 7px">Ctrl K</span>
+</div>
+<div style="flex:1"></div>
+<div style="display:flex;align-items:center;gap:9px;background:var(--color-accent-2-200);border-radius:999px;padding:7px 14px;flex:none">
+<span style="font-size:12px;font-weight:700;color:var(--color-accent-2-800)">מדד הדיור</span>
+<span style="font-family:'Rubik',sans-serif;font-weight:600;font-size:14px;color:var(--color-accent-2-800)">{{ idxValue }}</span>
+<span style="font-size:12px;font-weight:700;color:var(--color-accent-2-700)">{{ idxYoy }}</span>
+</div>
+<button style="width:36px;height:36px;flex:none;border-radius:999px;border:1px solid var(--color-neutral-300);background:var(--color-bg);cursor:pointer;color:var(--color-neutral-700);display:flex;align-items:center;justify-content:center">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px"><path d="M20 7h-9"></path><path d="M14 17H5"></path><path d="M17 14a3 3 0 1 0 0 6 3 3 0 1 0 0-6"></path><path d="M7 4a3 3 0 1 0 0 6 3 3 0 1 0 0-6"></path></svg>
+</button>
+</div>
+
+<div style="flex:1;min-height:0;display:flex">
+
+<div class="bt-scroll" style="width:320px;flex:none;border-left:1px solid var(--color-neutral-300);background:var(--color-neutral-100);overflow-y:auto;padding:18px 16px">
+<div style="display:flex;align-items:baseline;justify-content:space-between">
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:16px">אזורים במעקב</div>
+<span style="font-size:11.5px;color:var(--color-neutral-600)">{{ count }}</span>
+</div>
+<div style="display:flex;flex-direction:column;gap:4px;margin-top:12px">
+<sc-for list="{{ deskAreas }}" as="a" hint-placeholder-count="5">
+<div style="background:{{ a.bg }};border:1px solid {{ a.bd }};border-radius:14px;padding:11px 12px;cursor:pointer" style-hover="background:var(--color-neutral-200)">
+<div style="display:flex;align-items:center;gap:9px">
+<button onClick="{{ a.toggle }}" style="width:17px;height:17px;flex:none;border-radius:5px;border:2px solid {{ a.boxBd }};background:{{ a.box }};cursor:pointer;padding:0;display:flex;align-items:center;justify-content:center">
+<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" style="width:11px;height:11px"><path d="M20 6 9 17l-5-5"></path></svg>
+</button>
+<div style="flex:1;min-width:0;font-weight:700;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ a.name }}</div>
+</div>
+<div style="display:flex;align-items:flex-end;justify-content:space-between;gap:10px;margin-top:7px;padding-right:26px">
+<div style="min-width:0">
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:14px">{{ a.price }}</div>
+<div style="font-size:11px;color:var(--color-neutral-600);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ a.city }} · {{ a.deals }} עסקאות</div>
+</div>
+<div style="display:flex;align-items:center;gap:8px;flex:none">
+<svg viewBox="0 0 64 24" preserveAspectRatio="none" style="width:58px;height:22px;flex:none">
+<path d="{{ a.spark }}" fill="none" stroke="{{ a.dcolor }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span style="font-size:12px;font-weight:700;color:{{ a.dcolor }}">{{ a.delta }}</span>
+</div>
+</div>
+</div>
+</sc-for>
+</div>
+
+<button style="width:100%;margin-top:12px;border:1px solid var(--color-neutral-300);background:transparent;color:var(--color-neutral-700);border-radius:999px;padding:10px 0;font-family:'Assistant',sans-serif;font-size:12.5px;font-weight:700;cursor:pointer" style-hover="background:var(--color-neutral-200)">הוספת אזור</button>
+
+<div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--color-neutral-200)">
+<div style="font-size:11px;letter-spacing:.09em;font-weight:700;color:var(--color-accent-2)">השוואה</div>
+<div style="font-size:12.5px;line-height:1.5;color:var(--color-neutral-700);margin-top:6px">{{ deskCompareLabel }}</div>
+<sc-if value="{{ deskCanCompare }}" hint-placeholder-val="{{ true }}">
+<button style="width:100%;margin-top:10px;border:0;background:var(--color-accent);color:#fff;border-radius:999px;padding:11px 0;font-family:'Assistant',sans-serif;font-size:13px;font-weight:700;cursor:pointer" style-hover="background:var(--color-accent-600)">פתיחת השוואה</button>
+</sc-if>
+</div>
+</div>
+
+<div class="bt-scroll" style="flex:1;min-width:0;overflow-y:auto;padding:20px 22px">
+<div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px">
+<div>
+<div style="font-size:11.5px;color:var(--color-neutral-600);font-weight:600">תל אביב–יפו</div>
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:26px;line-height:1.15;margin-top:2px">רמת אביב ג׳</div>
+</div>
+<div style="display:flex;gap:8px">
+<button style="border:1px solid var(--color-neutral-300);background:var(--color-neutral-100);border-radius:999px;padding:9px 16px;font-family:'Assistant',sans-serif;font-size:12.5px;font-weight:700;cursor:pointer;color:var(--color-text)" style-hover="background:var(--color-neutral-200)">5 שנים</button>
+<button style="border:1px solid var(--color-neutral-300);background:var(--color-neutral-100);border-radius:999px;padding:9px 16px;font-family:'Assistant',sans-serif;font-size:12.5px;font-weight:700;cursor:pointer;color:var(--color-text)" style-hover="background:var(--color-neutral-200)">3–5 חדרים</button>
+<button style="border:0;background:var(--color-text);color:var(--color-bg);border-radius:999px;padding:9px 16px;font-family:'Assistant',sans-serif;font-size:12.5px;font-weight:700;cursor:pointer">ייצוא CSV</button>
+</div>
+</div>
+
+<div style="display:flex;gap:10px;margin-top:16px">
+<sc-for list="{{ deskSummary }}" as="s" hint-placeholder-count="4">
+<div style="flex:1;background:var(--color-neutral-100);border:1px solid var(--color-neutral-300);border-radius:16px;padding:13px 15px">
+<div style="font-size:11px;color:var(--color-neutral-600);font-weight:700">{{ s.k }}</div>
+<div style="display:flex;align-items:baseline;gap:8px;margin-top:4px">
+<span style="font-family:'Rubik',sans-serif;font-weight:600;font-size:20px">{{ s.v }}</span>
+<span style="font-size:12px;font-weight:700;color:{{ s.c }}">{{ s.d }}</span>
+</div>
+</div>
+</sc-for>
+</div>
+
+<div style="background:var(--color-neutral-100);border:1px solid var(--color-neutral-300);border-radius:18px;margin-top:14px;overflow:hidden">
+<div style="display:grid;grid-template-columns:88px 1fr 68px 68px 68px 118px 108px;gap:0;background:var(--color-surface);border-bottom:1px solid var(--color-neutral-300)">
+<sc-for list="{{ deskCols }}" as="c" hint-placeholder-count="7">
+<button onClick="{{ c.sort }}" style="border:0;background:transparent;cursor:pointer;padding:11px 12px;font-family:'Assistant',sans-serif;font-size:11.5px;font-weight:700;color:{{ c.fg }};text-align:{{ c.align }};display:flex;align-items:center;gap:4px;justify-content:flex-start" style-hover="color:var(--color-text)">
+<span>{{ c.k }}</span><span style="font-size:10px">{{ c.arrow }}</span>
+</button>
+</sc-for>
+</div>
+<sc-for list="{{ deskRows }}" as="r" hint-placeholder-count="14">
+<div onMouseEnter="{{ r.on }}" onMouseLeave="{{ r.off }}" style="display:grid;grid-template-columns:88px 1fr 68px 68px 68px 118px 108px;align-items:center;background:{{ r.bg }};border-bottom:1px solid var(--color-neutral-200);cursor:pointer;transition:background .12s linear">
+<span style="padding:11px 12px;font-size:12.5px;color:var(--color-neutral-700)">{{ r.date }}</span>
+<span style="padding:11px 12px;font-size:13.5px;font-weight:600">{{ r.address }}</span>
+<span style="padding:11px 12px;font-size:12.5px">{{ r.rooms }}</span>
+<span style="padding:11px 12px;font-size:12.5px">{{ r.sqm }}</span>
+<span style="padding:11px 12px;font-size:12.5px">{{ r.floor }}</span>
+<span style="padding:11px 12px;font-family:'Rubik',sans-serif;font-weight:600;font-size:14px">{{ r.price }}</span>
+<span style="padding:11px 12px;font-size:12.5px;color:var(--color-neutral-700)">{{ r.psm }}</span>
+</div>
+</sc-for>
+</div>
+<div style="font-size:11.5px;color:var(--color-neutral-600);margin-top:10px">14 מתוך 38 עסקאות · נתוני רשות המסים דרך govmap · נשמרו ב־12.6.2026</div>
+</div>
+
+<div style="width:420px;flex:none;border-right:1px solid var(--color-neutral-300);background:var(--color-neutral-100);display:flex;flex-direction:column;padding:18px 16px;gap:12px;overflow:hidden">
+<div style="flex:1;min-height:0;position:relative;border-radius:18px;overflow:hidden;background:var(--color-surface);border:1px solid var(--color-neutral-300)">
+<svg viewBox="0 0 420 420" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%">
+<path d="M0 150 C100 132 160 172 250 148 S390 104 420 122" fill="none" stroke="#c0b6a5" stroke-width="16" stroke-linecap="round"></path>
+<path d="M0 268 C110 248 172 286 258 264 S392 220 420 236" fill="none" stroke="#c0b6a5" stroke-width="12" stroke-linecap="round"></path>
+<path d="M118 0 C134 106 96 200 142 292 S200 382 180 420" fill="none" stroke="#c0b6a5" stroke-width="13" stroke-linecap="round"></path>
+<path d="M298 0 C286 98 314 188 290 274 S252 368 272 420" fill="none" stroke="#c0b6a5" stroke-width="10" stroke-linecap="round"></path>
+<circle cx="352" cy="348" r="54" fill="#aebf92" opacity=".32"></circle>
+<circle cx="58" cy="366" r="32" fill="#aebf92" opacity=".26"></circle>
+</svg>
+<sc-for list="{{ deskDots }}" as="d" hint-placeholder-count="14">
+<button onMouseEnter="{{ d.on }}" onMouseLeave="{{ d.off }}" style="position:absolute;right:{{ d.x }};top:{{ d.y }};width:{{ d.size }};height:{{ d.size }};border-radius:999px;background:{{ d.c }};border:{{ d.bd }};z-index:{{ d.z }};padding:0;cursor:pointer;opacity:.9;box-shadow:0 1px 4px rgba(32,30,29,.25);transition:width .18s ease,height .18s ease"></button>
+</sc-for>
+<div style="position:absolute;right:12px;left:12px;bottom:12px;display:flex;align-items:center;justify-content:center;gap:8px;background:rgba(253,247,234,.94);border:1px solid var(--color-neutral-300);border-radius:999px;padding:8px 14px;backdrop-filter:blur(6px)">
+<span style="font-size:11.5px;font-weight:700;color:var(--color-neutral-700)">זול</span>
+<sc-for list="{{ mapScale }}" as="c" hint-placeholder-count="5">
+<span style="width:12px;height:12px;border-radius:999px;background:{{ c }}"></span>
+</sc-for>
+<span style="font-size:11.5px;font-weight:700;color:var(--color-neutral-700)">יקר (₪/מ״ר)</span>
+</div>
+</div>
+<div style="flex:none;background:var(--color-bg);border:1px solid var(--color-neutral-300);border-radius:18px;padding:14px 15px">
+<div style="display:flex;align-items:baseline;justify-content:space-between">
+<span style="font-family:'Rubik',sans-serif;font-weight:600;font-size:14px">מחיר חציוני לפי חודש</span>
+<span style="font-size:11.5px;color:var(--color-neutral-600);font-weight:600">18 חודשים</span>
+</div>
+<svg viewBox="0 0 300 70" preserveAspectRatio="none" style="width:100%;height:70px;display:block;margin-top:8px">
+<path d="{{ deskTrend }}" fill="none" stroke="#c67139" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+
+</div>
+</div>
+</x-import>
+</div>
+
+</div>
+<p class="dv-next">Next: iPhone — the last piece of the plan. Or say the word and I'll take the desktop further: the comparison view, the מדד הדיור page, and the signed-out marketing page that makes a shared link worth opening.</p>
+</section>
+
+<section class="dv-turn" id="t3">
+<div class="dv-thd"><a class="dv-tid" href="#t3">3</a><span class="dv-tname">The full Android flow in <a class="dv-oid" href="#2a">2a</a> — חמים</span></div>
+<p class="dv-tnote">Every screen the app has, plus a deal detail sheet and a first-run that seeds a tracked area. מועדפים is gone as a destination — saved areas <em>are</em> the home screen — which frees the fourth tab for השוואה.</p>
+<div class="dv-opts">
+
+<div class="dv-opt" id="3a">
+<div class="dv-olabel"><a class="dv-oid" href="#3a">3a</a><span><b>חיפוש</b> — autocomplete inline under the field. Scope and period as pills; the radius slider only appears for רדיוס.</span></div>
+<x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" hint-size="428px,908px">
+<div dir="rtl" style="height:100%;position:relative;overflow:hidden;background:var(--color-bg);color:var(--color-text);font-family:'Assistant',sans-serif">
+<div class="bt-scroll" style="position:absolute;inset:0;overflow-y:auto;padding:18px 18px 112px;box-sizing:border-box">
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:25px;line-height:1.15">חיפוש עסקאות</div>
+<div style="font-size:13px;color:var(--color-neutral-700);margin-top:2px">נתוני רשות המסים דרך govmap</div>
+
+<div style="display:flex;align-items:center;gap:10px;background:var(--color-neutral-100);border:1px solid var(--color-neutral-300);border-radius:999px;padding:13px 17px;margin-top:16px">
+<span style="color:var(--color-neutral-700);display:flex;flex:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" style="width:19px;height:19px;flex:none"><path d="M11 3a8 8 0 1 0 0 16 8 8 0 1 0 0-16"></path><path d="M21 21l-4.35-4.35"></path></svg></span>
+<span style="flex:1;font-size:15px">{{ searchText }}</span>
+<span style="width:16px;height:16px;border-radius:999px;border:2px solid var(--color-neutral-300);border-top-color:var(--color-accent)"></span>
+</div>
+
+<div style="background:var(--color-neutral-100);border:1px solid var(--color-neutral-300);border-radius:22px;margin-top:8px;overflow:hidden;box-shadow:0 6px 18px rgba(32,30,29,.08)">
+<sc-for list="{{ candidates }}" as="c" hint-placeholder-count="4">
+<button style="display:flex;align-items:center;gap:11px;width:100%;text-align:right;cursor:pointer;border:0;border-bottom:1px solid var(--color-neutral-200);background:transparent;padding:13px 15px;font-family:'Assistant',sans-serif" style-hover="background:var(--color-neutral-200)">
+<span style="color:var(--color-accent);flex:none;display:flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px;flex:none"><path d="M20 10c0 4.99-5.54 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.54 20.19 4 14.99 4 10a8 8 0 0 1 16 0"></path><path d="M12 7a3 3 0 1 0 0 6 3 3 0 1 0 0-6"></path></svg></span>
+<span style="flex:1;font-size:14px;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ c.t }}</span>
+<span style="font-size:11px;font-weight:700;color:var(--color-accent-2-800);background:var(--color-accent-2-200);border-radius:999px;padding:3px 9px;flex:none">{{ c.k }}</span>
+</button>
+</sc-for>
+</div>
+
+<div style="font-size:11.5px;letter-spacing:.08em;font-weight:700;color:var(--color-accent-2);margin:22px 0 9px">היקף החיפוש</div>
+<div style="display:flex;gap:7px">
+<sc-for list="{{ scopes }}" as="c" hint-placeholder-count="4">
+<button onClick="{{ c.pick }}" style="flex:1;cursor:pointer;border:1px solid {{ c.bd }};background:{{ c.bg }};color:{{ c.fg }};border-radius:999px;padding:9px 0;font-family:'Assistant',sans-serif;font-size:12.5px;font-weight:700;transition:all .25s ease">{{ c.label }}</button>
+</sc-for>
+</div>
+
+<sc-if value="{{ isRadius }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top:14px;background:var(--color-neutral-100);border:1px solid var(--color-neutral-300);border-radius:20px;padding:14px 16px">
+<div style="font-size:13px;font-weight:700">{{ radiusLabel }}</div>
+<input type="range" min="100" max="1000" step="50" value="{{ radius }}" onChange="{{ setRadius }}" style="width:100%;margin-top:8px;accent-color:var(--color-accent)">
+</div>
+</sc-if>
+
+<div style="font-size:11.5px;letter-spacing:.08em;font-weight:700;color:var(--color-accent-2);margin:22px 0 9px">תקופה</div>
+<div style="display:flex;gap:7px">
+<sc-for list="{{ periods }}" as="c" hint-placeholder-count="4">
+<button onClick="{{ c.pick }}" style="flex:1;cursor:pointer;border:1px solid {{ c.bd }};background:{{ c.bg }};color:{{ c.fg }};border-radius:999px;padding:9px 0;font-family:'Assistant',sans-serif;font-size:12.5px;font-weight:700;transition:all .25s ease">{{ c.label }}</button>
+</sc-for>
+</div>
+
+<div style="font-size:11.5px;letter-spacing:.08em;font-weight:700;color:var(--color-accent-2);margin:22px 0 9px">חדרים</div>
+<div style="background:var(--color-neutral-100);border:1px solid var(--color-neutral-300);border-radius:20px;padding:14px 16px">
+<div style="display:flex;justify-content:space-between;font-size:13px;font-weight:700"><span>חדרים: 3–5</span><span style="color:var(--color-neutral-700);font-weight:600">מתוך 1–8+</span></div>
+<div style="position:relative;height:6px;border-radius:999px;background:var(--color-surface);margin-top:14px">
+<div style="position:absolute;right:28%;left:28%;top:0;bottom:0;border-radius:999px;background:var(--color-accent)"></div>
+<div style="position:absolute;right:calc(28% - 9px);top:-6px;width:18px;height:18px;border-radius:999px;background:var(--color-accent);border:3px solid var(--color-neutral-100)"></div>
+<div style="position:absolute;left:calc(28% - 9px);top:-6px;width:18px;height:18px;border-radius:999px;background:var(--color-accent);border:3px solid var(--color-neutral-100)"></div>
+</div>
+</div>
+
+<button style="width:100%;margin-top:20px;border:0;background:var(--color-accent);color:#fff;border-radius:999px;padding:16px 0;font-family:'Assistant',sans-serif;font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 6px 16px rgba(198,113,57,.32)" style-hover="background:var(--color-accent-600)">חיפוש עסקאות</button>
+
+</div>
+<div style="position:absolute;right:14px;left:14px;bottom:14px;height:64px;border-radius:999px;background:var(--color-text);box-shadow:0 10px 26px rgba(32,30,29,.28);display:flex;align-items:center;padding:0 7px;z-index:5">
+<sc-for list="{{ navSearch }}" as="t" hint-placeholder-count="4">
+<button style="flex:1;height:48px;border:0;cursor:pointer;background:{{ t.bg }};border-radius:999px;display:flex;align-items:center;justify-content:center;gap:6px;color:{{ t.fg }};font-family:'Assistant',sans-serif;font-size:12.5px;font-weight:700">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" style="width:19px;height:19px;flex:none"><sc-for list="{{ t.icon }}" as="p" hint-placeholder-count="2"><path d="{{ p }}"></path></sc-for></svg>
+<span style="max-width:{{ t.w }};overflow:hidden;white-space:nowrap">{{ t.label }}</span>
+</button>
+</sc-for>
+</div>
+</div>
+</x-import>
+</div>
+
+<div class="dv-opt" id="3b">
+<div class="dv-olabel"><a class="dv-oid" href="#3b">3b</a><span><b>מגמות</b> — the three series from <code>TrendsTab.kt</code>, each with its own range printed rather than a full axis. Sparse months read honestly as gaps in the bars.</span></div>
+<x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" hint-size="428px,908px">
+<div class="bt-scroll" dir="rtl" style="height:100%;overflow-y:auto;background:var(--color-bg);color:var(--color-text);font-family:'Assistant',sans-serif;box-sizing:border-box;position:relative">
+<div style="position:sticky;top:0;z-index:4;background:var(--color-bg);padding:16px 18px 0">
+<div style="display:flex;align-items:center;gap:10px">
+<button style="width:40px;height:40px;flex:none;border-radius:999px;border:1px solid var(--color-neutral-300);background:var(--color-surface);cursor:pointer;color:var(--color-text);display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" style="width:19px;height:19px;flex:none"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></button>
+<div style="flex:1;min-width:0">
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:19px">רמת אביב ג׳</div>
+<div style="font-size:12px;color:var(--color-neutral-700)">תל אביב–יפו · 38 עסקאות · 5 שנים</div>
+</div>
+<button style="width:40px;height:40px;flex:none;border-radius:999px;border:0;background:var(--color-accent);cursor:pointer;color:#fff;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;flex:none"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"></path></svg></button>
+</div>
+<div style="display:flex;background:var(--color-surface);border-radius:999px;padding:4px;gap:3px;margin-top:14px">
+<button style="flex:1;border:0;cursor:pointer;border-radius:999px;padding:9px 0;font-family:'Assistant',sans-serif;font-size:13px;font-weight:700;color:var(--color-neutral-700);background:transparent">עסקאות</button>
+<button style="flex:1;border:0;cursor:pointer;border-radius:999px;padding:9px 0;font-family:'Assistant',sans-serif;font-size:13px;font-weight:700;color:var(--color-bg);background:var(--color-text)">מגמות</button>
+<button style="flex:1;border:0;cursor:pointer;border-radius:999px;padding:9px 0;font-family:'Assistant',sans-serif;font-size:13px;font-weight:700;color:var(--color-neutral-700);background:transparent">מפה</button>
+</div>
+</div>
+
+<div style="padding:16px 18px 30px;display:flex;flex-direction:column;gap:14px">
+<div style="background:var(--color-neutral-100);border:1px solid var(--color-neutral-300);border-radius:22px;padding:16px 16px 12px">
+<div style="display:flex;align-items:baseline;justify-content:space-between">
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:16px">מחיר חציוני לפי חודש</div>
+<div style="font-size:11.5px;color:var(--color-neutral-700);font-weight:600">{{ trendMedRange.1 }} – {{ trendMedRange.0 }}</div>
+</div>
+<svg viewBox="0 0 300 120" preserveAspectRatio="none" style="width:100%;height:120px;display:block;margin-top:12px">
+<defs><linearGradient id="ndT1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c67139" stop-opacity=".3"></stop><stop offset="100%" stop-color="#c67139" stop-opacity="0"></stop></linearGradient></defs>
+<path d="{{ trendMedianArea }}" fill="url(#ndT1)"></path>
+<path d="{{ trendMedian }}" fill="none" stroke="#c67139" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<div style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--color-neutral-600);font-weight:600;padding-top:8px;direction:ltr">
+<sc-for list="{{ trendLabels }}" as="l" hint-placeholder-count="9"><span>{{ l }}</span></sc-for>
+</div>
+</div>
+
+<div style="background:var(--color-neutral-100);border:1px solid var(--color-neutral-300);border-radius:22px;padding:16px 16px 12px">
+<div style="display:flex;align-items:baseline;justify-content:space-between">
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:16px">מחיר חציוני למ״ר</div>
+<div style="font-size:11.5px;color:var(--color-neutral-700);font-weight:600">{{ trendPsmRange.1 }} – {{ trendPsmRange.0 }}</div>
+</div>
+<svg viewBox="0 0 300 120" preserveAspectRatio="none" style="width:100%;height:120px;display:block;margin-top:12px">
+<path d="{{ trendPsm }}" fill="none" stroke="#7a8a5e" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+
+<div style="background:var(--color-neutral-100);border:1px solid var(--color-neutral-300);border-radius:22px;padding:16px">
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:16px">מספר עסקאות לפי חודש</div>
+<svg viewBox="0 0 300 92" preserveAspectRatio="none" style="width:100%;height:92px;display:block;margin-top:12px">
+<sc-for list="{{ trendBars }}" as="b" hint-placeholder-count="18">
+<rect x="{{ b.x }}" y="{{ b.y }}" width="{{ b.w }}" height="{{ b.h }}" rx="2.5" fill="#f6a06b"></rect>
+</sc-for>
+</svg>
+</div>
+</div>
+</div>
+</x-import>
+</div>
+
+<div class="dv-opt" id="3c">
+<div class="dv-olabel"><a class="dv-oid" href="#3c">3c</a><span><b>מפה</b> — the ₪/מ״ר quintile dots from <code>MapTab.kt</code>, unchanged in logic. Real tiles are osmdroid; the legend becomes a floating pill so it stops eating a strip of map.</span></div>
+<x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" hint-size="428px,908px">
+<div dir="rtl" style="height:100%;background:var(--color-bg);color:var(--color-text);font-family:'Assistant',sans-serif;box-sizing:border-box;position:relative;display:flex;flex-direction:column">
+<div style="padding:16px 18px 0;flex:none">
+<div style="display:flex;align-items:center;gap:10px">
+<button style="width:40px;height:40px;flex:none;border-radius:999px;border:1px solid var(--color-neutral-300);background:var(--color-surface);cursor:pointer;color:var(--color-text);display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" style="width:19px;height:19px;flex:none"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></button>
+<div style="flex:1;min-width:0">
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:19px">רמת אביב ג׳</div>
+<div style="font-size:12px;color:var(--color-neutral-700)">תל אביב–יפו · 38 עסקאות · 5 שנים</div>
+</div>
+<button style="width:40px;height:40px;flex:none;border-radius:999px;border:0;background:var(--color-accent);cursor:pointer;color:#fff;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;flex:none"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"></path></svg></button>
+</div>
+<div style="display:flex;background:var(--color-surface);border-radius:999px;padding:4px;gap:3px;margin-top:14px">
+<button style="flex:1;border:0;cursor:pointer;border-radius:999px;padding:9px 0;font-family:'Assistant',sans-serif;font-size:13px;font-weight:700;color:var(--color-neutral-700);background:transparent">עסקאות</button>
+<button style="flex:1;border:0;cursor:pointer;border-radius:999px;padding:9px 0;font-family:'Assistant',sans-serif;font-size:13px;font-weight:700;color:var(--color-neutral-700);background:transparent">מגמות</button>
+<button style="flex:1;border:0;cursor:pointer;border-radius:999px;padding:9px 0;font-family:'Assistant',sans-serif;font-size:13px;font-weight:700;color:var(--color-bg);background:var(--color-text)">מפה</button>
+</div>
+</div>
+<div style="flex:1;position:relative;margin:14px;border-radius:22px;overflow:hidden;background:var(--color-surface);border:1px solid var(--color-neutral-300)">
+<svg viewBox="0 0 340 520" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%">
+<path d="M0 190 C80 168 130 214 200 186 S310 130 340 152" fill="none" stroke="#c0b6a5" stroke-width="15" stroke-linecap="round"></path>
+<path d="M0 330 C90 306 140 352 210 326 S320 272 340 292" fill="none" stroke="#c0b6a5" stroke-width="11" stroke-linecap="round"></path>
+<path d="M92 0 C108 130 74 246 118 358 S172 470 152 520" fill="none" stroke="#c0b6a5" stroke-width="12" stroke-linecap="round"></path>
+<path d="M244 0 C232 120 262 230 236 336 S196 452 216 520" fill="none" stroke="#c0b6a5" stroke-width="9" stroke-linecap="round"></path>
+<circle cx="290" cy="432" r="58" fill="#aebf92" opacity=".34"></circle>
+<circle cx="46" cy="452" r="34" fill="#aebf92" opacity=".28"></circle>
+</svg>
+<sc-for list="{{ mapDots }}" as="d" hint-placeholder-count="15">
+<span style="position:absolute;right:{{ d.x }};top:{{ d.y }};width:{{ d.r }};height:{{ d.r }};border-radius:999px;background:{{ d.c }};opacity:.82;border:2px solid rgba(255,255,255,.75);box-shadow:0 1px 3px rgba(32,30,29,.2)"></span>
+</sc-for>
+<div style="position:absolute;right:12px;left:12px;bottom:12px;display:flex;align-items:center;justify-content:center;gap:8px;background:rgba(253,247,234,.94);border:1px solid var(--color-neutral-300);border-radius:999px;padding:9px 14px;box-shadow:0 4px 14px rgba(32,30,29,.14);backdrop-filter:blur(6px)">
+<span style="font-size:11.5px;font-weight:700;color:var(--color-neutral-700)">זול</span>
+<sc-for list="{{ mapScale }}" as="c" hint-placeholder-count="5">
+<span style="width:13px;height:13px;border-radius:999px;background:{{ c }}"></span>
+</sc-for>
+<span style="font-size:11.5px;font-weight:700;color:var(--color-neutral-700)">יקר (₪/מ״ר)</span>
+</div>
+</div>
+</div>
+</x-import>
+</div>
+
+<div class="dv-opt" id="3d">
+<div class="dv-olabel"><a class="dv-oid" href="#3d">3d</a><span><b>עסקה</b> — new. A deal card is currently terminal; the only exit is out to nadlan.gov.il. This gives it context: where it sits against the neighbourhood median, and the three nearest comparable sales.</span></div>
+<x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" hint-size="428px,908px">
+<div dir="rtl" style="height:100%;background:var(--color-bg);color:var(--color-text);font-family:'Assistant',sans-serif;box-sizing:border-box;position:relative;overflow:hidden">
+<div class="bt-scroll" style="position:absolute;inset:0;overflow-y:auto;padding:16px 18px 30px;filter:blur(1.5px);opacity:.5">
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:19px">רמת אביב ג׳</div>
+<div style="display:flex;flex-direction:column;gap:10px;margin-top:14px">
+<sc-for list="{{ deals }}" as="d" hint-placeholder-count="4">
+<div style="background:var(--color-neutral-100);border:1px solid var(--color-neutral-300);border-radius:22px;padding:14px 15px">
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:20px">{{ d.price }}</div>
+<div style="font-size:14px;margin-top:4px">{{ d.address }}</div>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="position:absolute;inset:0;background:rgba(32,30,29,.28)"></div>
+
+<div class="bt-scroll" style="position:absolute;right:0;left:0;bottom:0;top:52px;background:var(--color-bg);border-radius:28px 28px 0 0;overflow-y:auto;box-shadow:0 -16px 44px rgba(32,30,29,.26);padding:0 20px 28px">
+<div style="position:sticky;top:0;background:var(--color-bg);padding:12px 0 6px;z-index:2">
+<div style="width:44px;height:5px;border-radius:999px;background:var(--color-neutral-300);margin:0 auto 14px"></div>
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px">
+<div>
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:29px;line-height:1">{{ sheetDeal.price }}</div>
+<div style="font-size:13px;color:var(--color-neutral-700);margin-top:5px">נרשמה ב־{{ sheetDeal.date }}</div>
+</div>
+<button style="width:38px;height:38px;flex:none;border-radius:999px;border:1px solid var(--color-neutral-300);background:var(--color-surface);cursor:pointer;color:var(--color-neutral-700);display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px;flex:none"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+</div>
+</div>
+
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:18px;margin-top:10px">{{ sheetDeal.address }}</div>
+<div style="font-size:13px;color:var(--color-neutral-700);margin-top:2px">{{ sheetDeal.city }}</div>
+
+<div style="display:flex;gap:8px;margin-top:16px">
+<sc-for list="{{ sheetDeal.stats }}" as="s" hint-placeholder-count="3">
+<div style="flex:1;background:var(--color-neutral-100);border:1px solid var(--color-neutral-300);border-radius:18px;padding:12px">
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:19px">{{ s.v }}</div>
+<div style="font-size:11px;color:var(--color-neutral-700);font-weight:700;margin-top:3px">{{ s.k }}</div>
+</div>
+</sc-for>
+</div>
+
+<div style="background:var(--color-accent-200);border:1px solid var(--color-accent-300);border-radius:22px;padding:16px;margin-top:12px">
+<div style="font-size:11.5px;letter-spacing:.07em;font-weight:700;color:var(--color-accent-700)">מחיר למ״ר</div>
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:26px;color:var(--color-accent-800);margin-top:3px">{{ sheetDeal.psm }}</div>
+<div style="font-size:12.5px;color:var(--color-accent-700);margin-top:2px">חציון השכונה 52,400 ₪ למ״ר</div>
+</div>
+
+<div style="margin-top:18px;background:var(--color-neutral-100);border:1px solid var(--color-neutral-300);border-radius:22px;overflow:hidden">
+<sc-for list="{{ sheetDeal.rows }}" as="r" hint-placeholder-count="4">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 15px;border-bottom:1px solid var(--color-neutral-200)">
+<span style="font-size:13px;color:var(--color-neutral-700)">{{ r.k }}</span>
+<span style="font-size:13.5px;font-weight:700">{{ r.v }}</span>
+</div>
+</sc-for>
+</div>
+
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:17px;margin-top:22px">עסקאות דומות בסביבה</div>
+<div style="display:flex;flex-direction:column;gap:8px;margin-top:10px">
+<sc-for list="{{ sheetDeal.near }}" as="n" hint-placeholder-count="3">
+<div style="display:flex;align-items:center;gap:12px;background:var(--color-neutral-100);border:1px solid var(--color-neutral-300);border-radius:18px;padding:12px 14px">
+<div style="width:7px;height:34px;border-radius:999px;background:var(--color-accent-2-400);flex:none"></div>
+<div style="flex:1;min-width:0">
+<div style="font-weight:700;font-size:13.5px">{{ n.a }}</div>
+<div style="font-size:11.5px;color:var(--color-neutral-700);margin-top:1px">{{ n.m }}</div>
+</div>
+<div style="font-weight:700;font-size:13.5px;flex:none">{{ n.p }}</div>
+</div>
+</sc-for>
+</div>
+
+<button style="width:100%;margin-top:20px;border:1px solid var(--color-neutral-300);background:var(--color-surface);color:var(--color-text);border-radius:999px;padding:14px 0;font-family:'Assistant',sans-serif;font-size:14px;font-weight:700;cursor:pointer" style-hover="background:var(--color-neutral-300)">שנת בנייה ופרטים נוספים — nadlan.gov.il ⤴</button>
+</div>
+</div>
+</x-import>
+</div>
+
+<div class="dv-opt" id="3e">
+<div class="dv-olabel"><a class="dv-oid" href="#3e">3e</a><span><b>השוואה</b> — its own tab now. Two areas overlaid on shared axes, then the numbers as a plain paired table rather than duelling bars, because the magnitudes here differ too much for bars to be readable.</span></div>
+<x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" hint-size="428px,908px">
+<div dir="rtl" style="height:100%;position:relative;overflow:hidden;background:var(--color-bg);color:var(--color-text);font-family:'Assistant',sans-serif">
+<div class="bt-scroll" style="position:absolute;inset:0;overflow-y:auto;padding:18px 18px 112px;box-sizing:border-box">
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:25px;line-height:1.15">השוואת אזורים</div>
+<div style="font-size:13px;color:var(--color-neutral-700);margin-top:2px">שני אזורים מתוך המעקב שלך</div>
+
+<div style="display:flex;gap:10px;margin-top:16px">
+<div style="flex:1;background:var(--color-neutral-100);border:2px solid var(--color-accent);border-radius:20px;padding:13px 14px">
+<div style="display:flex;align-items:center;gap:7px">
+<span style="width:10px;height:10px;border-radius:999px;background:var(--color-accent);flex:none"></span>
+<span style="font-size:11px;font-weight:700;color:var(--color-neutral-700)">אזור א׳</span>
+</div>
+<div style="font-weight:700;font-size:14.5px;margin-top:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">רמת אביב ג׳</div>
+<div style="font-size:11.5px;color:var(--color-neutral-700)">תל אביב–יפו</div>
+</div>
+<div style="flex:1;background:var(--color-neutral-100);border:2px solid var(--color-accent-2);border-radius:20px;padding:13px 14px">
+<div style="display:flex;align-items:center;gap:7px">
+<span style="width:10px;height:10px;border-radius:999px;background:var(--color-accent-2);flex:none"></span>
+<span style="font-size:11px;font-weight:700;color:var(--color-neutral-700)">אזור ב׳</span>
+</div>
+<div style="font-weight:700;font-size:14.5px;margin-top:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">הרצל והסביבה</div>
+<div style="font-size:11.5px;color:var(--color-neutral-700)">כפר סבא</div>
+</div>
+</div>
+
+<div style="background:var(--color-neutral-100);border:1px solid var(--color-neutral-300);border-radius:22px;padding:16px;margin-top:12px">
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:16px">מחיר חציוני, 18 חודשים</div>
+<svg viewBox="0 0 300 110" preserveAspectRatio="none" style="width:100%;height:110px;display:block;margin-top:12px">
+<path d="{{ cmpLineA }}" fill="none" stroke="#c67139" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="{{ cmpLineB }}" fill="none" stroke="#7a8a5e" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<div style="font-size:11px;color:var(--color-neutral-600);font-weight:600;text-align:center;padding-top:6px">כל קו מנורמל לטווח שלו — הפער המוחלט בטבלה למטה</div>
+</div>
+
+<div style="background:var(--color-neutral-100);border:1px solid var(--color-neutral-300);border-radius:22px;margin-top:12px;overflow:hidden">
+<sc-for list="{{ cmpRows }}" as="r" hint-placeholder-count="5">
+<div style="display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px;padding:13px 15px;border-bottom:1px solid var(--color-neutral-200)">
+<span style="font-size:14px;font-weight:700;color:var(--color-accent-700);text-align:right">{{ r.a }}</span>
+<span style="font-size:11px;font-weight:700;color:var(--color-neutral-700);letter-spacing:.05em;text-align:center;white-space:nowrap">{{ r.k }}</span>
+<span style="font-size:14px;font-weight:700;color:var(--color-accent-2-700);text-align:left">{{ r.b }}</span>
+</div>
+</sc-for>
+</div>
+
+<div style="background:var(--color-accent-2-200);border-radius:22px;padding:16px;margin-top:12px">
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:15px;color:var(--color-accent-2-800)">מה בולט</div>
+<div style="font-size:13px;line-height:1.55;color:var(--color-accent-2-800);margin-top:4px">רמת אביב ג׳ יקרה ב־68% למ״ר, אבל הדירות קטנות ב־16 מ״ר בחציון. כפר סבא היא היחידה מהשתיים שיורדת השנה.</div>
+</div>
+
+</div>
+<div style="position:absolute;right:14px;left:14px;bottom:14px;height:64px;border-radius:999px;background:var(--color-text);box-shadow:0 10px 26px rgba(32,30,29,.28);display:flex;align-items:center;padding:0 7px;z-index:5">
+<sc-for list="{{ navCompare }}" as="t" hint-placeholder-count="4">
+<button style="flex:1;height:48px;border:0;cursor:pointer;background:{{ t.bg }};border-radius:999px;display:flex;align-items:center;justify-content:center;gap:6px;color:{{ t.fg }};font-family:'Assistant',sans-serif;font-size:12.5px;font-weight:700">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" style="width:19px;height:19px;flex:none"><sc-for list="{{ t.icon }}" as="p" hint-placeholder-count="2"><path d="{{ p }}"></path></sc-for></svg>
+<span style="max-width:{{ t.w }};overflow:hidden;white-space:nowrap">{{ t.label }}</span>
+</button>
+</sc-for>
+</div>
+</div>
+</x-import>
+</div>
+
+<div class="dv-opt" id="3f">
+<div class="dv-olabel"><a class="dv-oid" href="#3f">3f</a><span><b>מדד הדיור</b> — buy and rent as two stacked sections, terracotta against sage so the divergence is the point of the screen.</span></div>
+<x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" hint-size="428px,908px">
+<div dir="rtl" style="height:100%;position:relative;overflow:hidden;background:var(--color-bg);color:var(--color-text);font-family:'Assistant',sans-serif">
+<div class="bt-scroll" style="position:absolute;inset:0;overflow-y:auto;padding:18px 18px 112px;box-sizing:border-box">
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:25px;line-height:1.15">מדדי הדיור</div>
+<div style="font-size:13px;color:var(--color-neutral-700);margin-top:2px">הלשכה המרכזית לסטטיסטיקה</div>
+
+<div style="display:flex;gap:7px;margin-top:16px">
+<sc-for list="{{ macroRanges }}" as="c" hint-placeholder-count="3">
+<button onClick="{{ c.pick }}" style="flex:1;cursor:pointer;border:1px solid {{ c.bd }};background:{{ c.bg }};color:{{ c.fg }};border-radius:999px;padding:9px 0;font-family:'Assistant',sans-serif;font-size:12.5px;font-weight:700;transition:all .25s ease">{{ c.label }}</button>
+</sc-for>
+</div>
+
+<sc-for list="{{ macroSections }}" as="m" hint-placeholder-count="2">
+<div style="margin-top:18px">
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:17px">{{ m.title }}</div>
+<div style="display:flex;gap:8px;margin-top:10px">
+<sc-for list="{{ m.stats }}" as="s" hint-placeholder-count="3">
+<div style="flex:1;background:var(--color-neutral-100);border:1px solid var(--color-neutral-300);border-radius:18px;padding:12px">
+<div style="font-size:10.5px;color:var(--color-neutral-700);font-weight:700">{{ s.k }}</div>
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:19px;margin-top:4px">{{ s.v }}</div>
+<div style="font-size:10.5px;color:var(--color-neutral-600);margin-top:1px">{{ s.s }}</div>
+</div>
+</sc-for>
+</div>
+<div style="background:var(--color-neutral-100);border:1px solid var(--color-neutral-300);border-radius:22px;padding:14px;margin-top:9px">
+<svg viewBox="0 0 300 100" preserveAspectRatio="none" style="width:100%;height:100px;display:block">
+<path d="{{ m.d }}" fill="none" stroke="{{ m.stroke }}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+</sc-for>
+
+<div style="margin-top:20px;background:var(--color-accent-2-200);border-radius:22px;padding:15px">
+<div style="font-size:12.5px;line-height:1.55;color:var(--color-accent-2-800)">מחירי הרכישה עלו מהר יותר משכר הדירה בכל אחת מ־24 החודשים האחרונים.</div>
+</div>
+
+</div>
+<div style="position:absolute;right:14px;left:14px;bottom:14px;height:64px;border-radius:999px;background:var(--color-text);box-shadow:0 10px 26px rgba(32,30,29,.28);display:flex;align-items:center;padding:0 7px;z-index:5">
+<sc-for list="{{ navMacro }}" as="t" hint-placeholder-count="4">
+<button style="flex:1;height:48px;border:0;cursor:pointer;background:{{ t.bg }};border-radius:999px;display:flex;align-items:center;justify-content:center;gap:6px;color:{{ t.fg }};font-family:'Assistant',sans-serif;font-size:12.5px;font-weight:700">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" style="width:19px;height:19px;flex:none"><sc-for list="{{ t.icon }}" as="p" hint-placeholder-count="2"><path d="{{ p }}"></path></sc-for></svg>
+<span style="max-width:{{ t.w }};overflow:hidden;white-space:nowrap">{{ t.label }}</span>
+</button>
+</sc-for>
+</div>
+</div>
+</x-import>
+</div>
+
+<div class="dv-opt" id="3g">
+<div class="dv-olabel"><a class="dv-oid" href="#3g">3g</a><span><b>פתיחה</b> — new. Today a first-time user lands on a blank search field with no idea what the app does. This states the premise in one line and seeds a tracked area in one tap.</span></div>
+<x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" hint-size="428px,908px">
+<div dir="rtl" style="height:100%;background:var(--color-bg);color:var(--color-text);font-family:'Assistant',sans-serif;padding:30px 24px 26px;box-sizing:border-box;display:flex;flex-direction:column">
+<div style="width:66px;height:66px;border-radius:22px;background:var(--color-text);display:flex;align-items:center;justify-content:center;color:var(--color-accent-400);flex:none"><svg viewBox="0 0 108 108" style="width:36px;height:36px"><path fill="currentColor" transform="matrix(.5 0 0 .5 27 27)" d="M54,22L18,52h9v34h20V64h14v22h20V52h9L54,22z"></path></svg></div>
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:31px;line-height:1.2;margin-top:20px">מה באמת נמכר<br>ברחוב שלך</div>
+<div style="font-size:14.5px;line-height:1.55;color:var(--color-neutral-800);margin-top:10px">מחירי עסקאות אמיתיים מרשות המסים — לא מחירי מבוקש. בחרו אזור להתחיל לעקוב אחריו.</div>
+
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:24px">
+<sc-for list="{{ seedAreas }}" as="a" hint-placeholder-count="6">
+<button style="cursor:pointer;border:1px solid var(--color-neutral-300);background:var(--color-neutral-100);border-radius:999px;padding:11px 15px;font-family:'Assistant',sans-serif;text-align:right" style-hover="border-color:var(--color-accent);background:var(--color-neutral-200)">
+<span style="font-size:13.5px;font-weight:700">{{ a.n }}</span>
+<span style="font-size:12px;color:var(--color-neutral-700);margin-right:6px">{{ a.c }}</span>
+</button>
+</sc-for>
+</div>
+
+<div style="flex:1"></div>
+
+<button style="width:100%;border:0;background:var(--color-accent);color:#fff;border-radius:999px;padding:16px 0;font-family:'Assistant',sans-serif;font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 6px 16px rgba(198,113,57,.32)" style-hover="background:var(--color-accent-600)">חיפוש אזור אחר</button>
+<div style="text-align:center;font-size:11.5px;color:var(--color-neutral-600);margin-top:12px;line-height:1.5">הנתונים מוצגים כפי שהם ממקורות ממשלתיים פומביים.<br>האפליקציה אינה ייעוץ השקעות.</div>
+</div>
+</x-import>
+</div>
+
+<div class="dv-opt" id="3h">
+<div class="dv-olabel"><a class="dv-oid" href="#3h">3h</a><span><b>מצבי קצה</b> — the two your users will actually hit: the govmap WAF double-403, and a thin area where <code>TrendCalculator</code> can't draw. Both say what happened and what to do, instead of a bare sentence centred in an empty screen.</span></div>
+<div class="dv-pair">
+<x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" hint-size="428px,908px">
+<div dir="rtl" style="height:100%;background:var(--color-bg);color:var(--color-text);font-family:'Assistant',sans-serif;padding:18px;box-sizing:border-box;display:flex;flex-direction:column;position:relative">
+<div style="display:flex;align-items:center;gap:10px;flex:none">
+<button style="width:40px;height:40px;flex:none;border-radius:999px;border:1px solid var(--color-neutral-300);background:var(--color-surface);cursor:pointer;color:var(--color-text);display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" style="width:19px;height:19px;flex:none"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></button>
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:19px">רמת אביב ג׳</div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:14px;padding:0 14px">
+<div style="width:78px;height:78px;border-radius:999px;background:var(--color-accent-200);display:flex;align-items:center;justify-content:center;color:var(--color-accent-600)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" style="width:34px;height:34px;flex:none"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"></path><path d="M12 9v4"></path><path d="M12 17h.01"></path></svg></div>
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:21px;line-height:1.25">המקור הממשלתי חוסם<br>אותנו כרגע</div>
+<div style="font-size:13.5px;line-height:1.55;color:var(--color-neutral-800);max-width:250px">govmap מגביל בקשות בשעות העומס. מוצגים הנתונים ששמרנו ב־12.6, לפני 4 שעות.</div>
+<div style="display:flex;flex-direction:column;gap:9px;width:100%;max-width:250px;margin-top:4px">
+<button style="border:0;background:var(--color-accent);color:#fff;border-radius:999px;padding:13px 0;font-family:'Assistant',sans-serif;font-size:14px;font-weight:700;cursor:pointer">הצגת הנתונים השמורים</button>
+<button style="border:1px solid var(--color-neutral-300);background:transparent;color:var(--color-text);border-radius:999px;padding:13px 0;font-family:'Assistant',sans-serif;font-size:14px;font-weight:700;cursor:pointer">ניסיון נוסף</button>
+</div>
+</div>
+</div>
+</x-import>
+
+<x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" hint-size="428px,908px">
+<div dir="rtl" style="height:100%;background:var(--color-bg);color:var(--color-text);font-family:'Assistant',sans-serif;box-sizing:border-box;display:flex;flex-direction:column;position:relative">
+<div style="padding:16px 18px 0;flex:none">
+<div style="display:flex;align-items:center;gap:10px">
+<button style="width:40px;height:40px;flex:none;border-radius:999px;border:1px solid var(--color-neutral-300);background:var(--color-surface);cursor:pointer;color:var(--color-text);display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" style="width:19px;height:19px;flex:none"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></button>
+<div style="flex:1;min-width:0">
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:19px">טאגור 24 והסביבה</div>
+<div style="font-size:12px;color:var(--color-neutral-700)">תל אביב–יפו · 3 עסקאות · רדיוס 300 מ׳</div>
+</div>
+</div>
+<div style="display:flex;background:var(--color-surface);border-radius:999px;padding:4px;gap:3px;margin-top:14px">
+<button style="flex:1;border:0;border-radius:999px;padding:9px 0;font-family:'Assistant',sans-serif;font-size:13px;font-weight:700;color:var(--color-neutral-700);background:transparent">עסקאות</button>
+<button style="flex:1;border:0;border-radius:999px;padding:9px 0;font-family:'Assistant',sans-serif;font-size:13px;font-weight:700;color:var(--color-bg);background:var(--color-text)">מגמות</button>
+<button style="flex:1;border:0;border-radius:999px;padding:9px 0;font-family:'Assistant',sans-serif;font-size:13px;font-weight:700;color:var(--color-neutral-700);background:transparent">מפה</button>
+</div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:14px;padding:0 30px">
+<svg viewBox="0 0 120 60" style="width:120px;height:60px">
+<circle cx="18" cy="42" r="5" fill="#c0b6a5"></circle>
+<circle cx="60" cy="26" r="5" fill="#c0b6a5"></circle>
+<circle cx="102" cy="34" r="5" fill="#c0b6a5"></circle>
+<path d="M18 42 L60 26 L102 34" fill="none" stroke="#dcd3c4" stroke-width="2" stroke-dasharray="4 5"></path>
+</svg>
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:20px;line-height:1.25">3 עסקאות זה מעט מדי<br>בשביל מגמה</div>
+<div style="font-size:13.5px;line-height:1.55;color:var(--color-neutral-800);max-width:250px">הרחיבו את הרדיוס או את התקופה כדי לראות גרף שאפשר לסמוך עליו.</div>
+<div style="display:flex;gap:8px;margin-top:4px">
+<button style="border:1px solid var(--color-neutral-300);background:var(--color-neutral-100);border-radius:999px;padding:11px 16px;font-family:'Assistant',sans-serif;font-size:13px;font-weight:700;cursor:pointer;color:var(--color-text)">רדיוס 600 מ׳</button>
+<button style="border:1px solid var(--color-neutral-300);background:var(--color-neutral-100);border-radius:999px;padding:11px 16px;font-family:'Assistant',sans-serif;font-size:13px;font-weight:700;cursor:pointer;color:var(--color-text)">5 שנים</button>
+</div>
+</div>
+</div>
+</x-import>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Next: the theme as Kotlin (<code>Color.kt</code> / <code>Type.kt</code> / <code>Theme.kt</code>, <code>dynamicColor</code> off) so you can land the palette before any screen work — then iPhone, then desktop web.</p>
+</section>
+
+<section class="dv-turn" id="t2">
+<div class="dv-thd"><a class="dv-tid" href="#t2">2</a><span class="dv-tname">נדל״ן טרקר — three visual directions, same restructured navigation</span></div>
+<p class="dv-tnote">All three share one structural change: the app opens on <b>מעקב</b> — what you're already tracking — instead of an empty search field. השוואה is promoted out of the מועדפים compare-mode chip into its own tab, and הגדרות drops to a gear in the header. Caprasimo carries no Hebrew, so the display face here is <b>Rubik</b> over <b>Assistant</b> for body.</p>
+<div class="dv-opts">
+
+<div class="dv-opt" id="2a">
+<div class="dv-olabel"><a class="dv-oid" href="#2a">2a</a><span><b>חמים</b> — the Organic system played straight. Cream ground, terracotta and sage, big radii. Warmest of the three; reads like a personal tool rather than a government terminal. Shown with its results screen.</span></div>
+<div class="dv-pair">
+<x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" hint-size="428px,908px">
+<div dir="rtl" style="height:100%;position:relative;overflow:hidden;background:var(--color-bg);color:var(--color-text);font-family:'Assistant',sans-serif">
+<div class="bt-scroll" style="position:absolute;inset:0;overflow-y:auto;padding:18px 18px 112px;box-sizing:border-box">
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+<div>
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:27px;line-height:1.15">המעקב שלי</div>
+<div style="font-size:13px;color:var(--color-neutral-700);margin-top:2px">5 אזורים · עודכן היום ב־8:40</div>
+</div>
+<button style="width:42px;height:42px;flex:none;border-radius:999px;border:1px solid var(--color-neutral-300);background:var(--color-surface);cursor:pointer;color:var(--color-neutral-700);display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" style="width:19px;height:19px;flex:none"><path d="M20 7h-9"></path><path d="M14 17H5"></path><path d="M17 14a3 3 0 1 0 0 6 3 3 0 1 0 0-6"></path><path d="M7 4a3 3 0 1 0 0 6 3 3 0 1 0 0-6"></path></svg></button>
+</div>
+
+<div style="margin-top:18px;background:var(--color-text);border-radius:24px;padding:18px 18px 6px;position:relative;overflow:hidden;box-shadow:0 12px 30px rgba(32,30,29,.2)">
+<div style="position:absolute;left:-42px;top:-52px;width:150px;height:150px;border-radius:999px;background:radial-gradient(circle at 40% 40%,rgba(198,113,57,.5),transparent 68%)"></div>
+<div style="font-size:11.5px;letter-spacing:.06em;color:var(--color-neutral-500);font-weight:700">מדד מחירי הדירות · למ״ס</div>
+<div style="display:flex;align-items:flex-end;gap:9px;margin-top:5px">
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:32px;line-height:1;color:var(--color-bg)">{{ idxValue }}</div>
+<div style="background:var(--color-accent-2-800);color:var(--color-accent-2-200);border-radius:999px;padding:4px 10px;font-size:12px;font-weight:700;margin-bottom:4px">{{ idxYoy }} שנתי</div>
+</div>
+<div style="font-size:12.5px;color:var(--color-neutral-500);margin-top:5px">{{ idxPeriod }} · שכר דירה {{ rentYoy }}</div>
+<svg viewBox="0 0 320 78" preserveAspectRatio="none" style="width:100%;height:78px;display:block;margin-top:10px;overflow:visible">
+<defs><linearGradient id="ndFillA" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f6a06b" stop-opacity=".42"></stop><stop offset="100%" stop-color="#f6a06b" stop-opacity="0"></stop></linearGradient></defs>
+<path d="{{ idxArea }}" fill="url(#ndFillA)"></path>
+<path d="{{ idxLine }}" fill="none" stroke="#f6a06b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="900" style="animation:btDraw 1.6s cubic-bezier(.3,.9,.3,1) both"></path>
+</svg>
+<div style="display:flex;gap:6px;padding-bottom:12px">
+<sc-for list="{{ idxRanges }}" as="r" hint-placeholder-count="3">
+<button onClick="{{ r.pick }}" style="flex:1;border:0;cursor:pointer;border-radius:999px;padding:7px 0;font-family:'Assistant',sans-serif;font-size:12px;font-weight:700;color:{{ r.fg }};background:{{ r.bg }};transition:background .25s ease,color .25s ease">{{ r.label }}</button>
+</sc-for>
+</div>
+</div>
+
+<sc-if value="{{ stale }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;align-items:center;gap:9px;margin-top:12px;background:var(--color-accent-200);border:1px solid var(--color-accent-300);border-radius:16px;padding:11px 13px">
+<span style="color:var(--color-accent-700);display:flex;flex:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px;flex:none"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"></path><path d="M12 9v4"></path><path d="M12 17h.01"></path></svg></span>
+<span style="font-size:12.5px;line-height:1.4;color:var(--color-accent-800)">המקור הממשלתי לא זמין כרגע — מוצגים נתונים שמורים</span>
+</div>
+</sc-if>
+
+<div style="display:flex;align-items:baseline;justify-content:space-between;margin:24px 0 11px">
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:19px">אזורים במעקב</div>
+<span style="font-size:12.5px;color:var(--color-neutral-700)">מחיר חציוני</span>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ warmAreas }}" as="a" hint-placeholder-count="5">
+<button onClick="{{ a.open }}" style="display:block;width:100%;text-align:right;cursor:pointer;border:1px solid var(--color-neutral-300);background:var(--color-neutral-100);border-radius:22px;padding:14px 15px;font-family:'Assistant',sans-serif;box-shadow:0 2px 6px rgba(32,30,29,.05)" style-hover="background:var(--color-neutral-200)">
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px">
+<div style="min-width:0">
+<div style="font-weight:700;font-size:15.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ a.name }}</div>
+<div style="font-size:12.5px;color:var(--color-neutral-700);margin-top:1px">{{ a.city }} · {{ a.deals }} עסקאות</div>
+</div>
+<sc-if value="{{ a.bell }}" hint-placeholder-val="{{ false }}">
+<span style="color:var(--color-accent);flex:none;display:flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;flex:none"><path d="M10.27 21a2 2 0 0 0 3.46 0"></path><path d="M3.26 15.33A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.67C19.41 13.96 18 12.5 18 8A6 6 0 0 0 6 8c0 4.5-1.41 5.96-2.74 7.33"></path></svg></span>
+</sc-if>
+</div>
+<div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-top:10px">
+<div>
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:21px;line-height:1.1">{{ a.price }}</div>
+<div style="font-size:12px;color:var(--color-neutral-700);margin-top:1px">{{ a.psm }} ₪/מ״ר</div>
+</div>
+<div style="display:flex;align-items:center;gap:10px">
+<svg viewBox="0 0 96 34" preserveAspectRatio="none" style="width:96px;height:34px;display:block">
+<path d="{{ a.spark }}" fill="none" stroke="{{ a.dcolor }}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span style="font-size:13.5px;font-weight:700;color:{{ a.dcolor }};min-width:46px;text-align:left">{{ a.delta }}</span>
+</div>
+</div>
+</button>
+</sc-for>
+</div>
+
+</div>
+<div style="position:absolute;right:14px;left:14px;bottom:14px;height:64px;border-radius:999px;background:var(--color-text);box-shadow:0 10px 26px rgba(32,30,29,.28);display:flex;align-items:center;padding:0 7px;z-index:5">
+<sc-for list="{{ navA }}" as="t" hint-placeholder-count="4">
+<button onClick="{{ t.go }}" style="flex:1;height:48px;border:0;cursor:pointer;background:{{ t.bg }};border-radius:999px;display:flex;align-items:center;justify-content:center;gap:6px;color:{{ t.fg }};font-family:'Assistant',sans-serif;font-size:12.5px;font-weight:700;transition:background .3s ease,color .3s ease">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" style="width:19px;height:19px;flex:none"><sc-for list="{{ t.icon }}" as="p" hint-placeholder-count="2"><path d="{{ p }}"></path></sc-for></svg>
+<span style="max-width:{{ t.w }};overflow:hidden;white-space:nowrap;transition:max-width .3s ease">{{ t.label }}</span>
+</button>
+</sc-for>
+</div>
+</div>
+</x-import>
+
+<x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" hint-size="428px,908px">
+<div class="bt-scroll" dir="rtl" style="height:100%;overflow-y:auto;background:var(--color-bg);color:var(--color-text);font-family:'Assistant',sans-serif;box-sizing:border-box;position:relative">
+<div style="position:sticky;top:0;z-index:4;background:var(--color-bg);padding:16px 18px 0">
+<div style="display:flex;align-items:center;gap:10px">
+<button style="width:40px;height:40px;flex:none;border-radius:999px;border:1px solid var(--color-neutral-300);background:var(--color-surface);cursor:pointer;color:var(--color-text);display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" style="width:19px;height:19px;flex:none"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></button>
+<div style="flex:1;min-width:0">
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:19px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">רמת אביב ג׳</div>
+<div style="font-size:12px;color:var(--color-neutral-700)">תל אביב–יפו · 38 עסקאות · 5 שנים</div>
+</div>
+<button style="width:40px;height:40px;flex:none;border-radius:999px;border:0;background:var(--color-accent);cursor:pointer;color:#fff;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;flex:none"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"></path></svg></button>
+<button style="width:40px;height:40px;flex:none;border-radius:999px;border:1px solid var(--color-neutral-300);background:var(--color-surface);cursor:pointer;color:var(--color-neutral-700);display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px;flex:none"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path><path d="M21 3v5h-5"></path><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path><path d="M8 16H3v5"></path></svg></button>
+</div>
+<div style="display:flex;background:var(--color-surface);border-radius:999px;padding:4px;gap:3px;margin-top:14px">
+<button style="flex:1;border:0;cursor:pointer;border-radius:999px;padding:9px 0;font-family:'Assistant',sans-serif;font-size:13px;font-weight:700;color:var(--color-bg);background:var(--color-text)">עסקאות</button>
+<button style="flex:1;border:0;cursor:pointer;border-radius:999px;padding:9px 0;font-family:'Assistant',sans-serif;font-size:13px;font-weight:700;color:var(--color-neutral-700);background:transparent">מגמות</button>
+<button style="flex:1;border:0;cursor:pointer;border-radius:999px;padding:9px 0;font-family:'Assistant',sans-serif;font-size:13px;font-weight:700;color:var(--color-neutral-700);background:transparent">מפה</button>
+</div>
+</div>
+
+<div style="padding:14px 18px 30px">
+<div style="display:flex;gap:8px">
+<sc-for list="{{ summary }}" as="s" hint-placeholder-count="3">
+<div style="flex:1;background:var(--color-neutral-100);border:1px solid var(--color-neutral-300);border-radius:18px;padding:11px 12px">
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:17px;line-height:1.1">{{ s.v }}</div>
+<div style="font-size:11px;color:var(--color-neutral-700);font-weight:600;margin-top:3px">{{ s.k }}</div>
+</div>
+</sc-for>
+</div>
+
+<div style="display:flex;align-items:center;justify-content:space-between;margin:20px 0 10px">
+<span style="font-size:12.5px;color:var(--color-neutral-700);font-weight:600">38 עסקאות · לפי תאריך</span>
+<button style="border:1px solid var(--color-neutral-300);background:var(--color-surface);border-radius:999px;padding:7px 14px;font-family:'Assistant',sans-serif;font-size:12.5px;font-weight:700;cursor:pointer;color:var(--color-text)">סינון</button>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ deals }}" as="d" hint-placeholder-count="4">
+<div style="background:var(--color-neutral-100);border:1px solid var(--color-neutral-300);border-radius:22px;padding:14px 15px;box-shadow:0 2px 6px rgba(32,30,29,.05)">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px">
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:20px">{{ d.price }}</div>
+<div style="font-size:12px;color:var(--color-neutral-700)">{{ d.date }}</div>
+</div>
+<div style="font-size:14px;margin-top:4px">{{ d.address }}</div>
+<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px">
+<sc-for list="{{ d.chips }}" as="c" hint-placeholder-count="4">
+<span style="background:var(--color-accent-2-200);color:var(--color-accent-2-800);border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:700">{{ c }}</span>
+</sc-for>
+</div>
+<div style="font-size:11.5px;color:var(--color-neutral-700);margin-top:9px">{{ d.meta }}</div>
+<div style="font-size:12px;color:var(--color-accent-700);font-weight:600;margin-top:8px;cursor:pointer">שנת בנייה ופרטים נוספים — nadlan.gov.il ⤴</div>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+</x-import>
+</div>
+</div>
+
+<div class="dv-opt" id="2b">
+<div class="dv-olabel"><a class="dv-oid" href="#2b">2b</a><span><b>כהה</b> — ink ground, numbers first. Denser rows, sparklines inline, the index as a strip of tiles. Built for the investor/agent end of your mixed audience; the warm accents keep it from feeling like a trading terminal.</span></div>
+<x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" dark="{{ true }}" hint-size="428px,908px">
+<div dir="rtl" style="height:100%;position:relative;overflow:hidden;background:var(--color-text);color:var(--color-bg);font-family:'Assistant',sans-serif">
+<div class="bt-scroll" style="position:absolute;inset:0;overflow-y:auto;padding:18px 18px 112px;box-sizing:border-box">
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+<div>
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:26px;line-height:1.15">המעקב שלי</div>
+<div style="font-size:12.5px;color:var(--color-neutral-500);margin-top:2px">5 אזורים · 194 עסקאות במעקב</div>
+</div>
+<button style="width:40px;height:40px;flex:none;border-radius:999px;border:1px solid rgba(245,234,216,.16);background:transparent;cursor:pointer;color:var(--color-neutral-500);display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;flex:none"><path d="M20 7h-9"></path><path d="M14 17H5"></path><path d="M17 14a3 3 0 1 0 0 6 3 3 0 1 0 0-6"></path><path d="M7 4a3 3 0 1 0 0 6 3 3 0 1 0 0-6"></path></svg></button>
+</div>
+
+<div style="display:flex;gap:8px;margin-top:18px">
+<sc-for list="{{ darkTiles }}" as="t" hint-placeholder-count="3">
+<div style="flex:1;background:var(--color-neutral-900);border:1px solid rgba(245,234,216,.1);border-radius:16px;padding:12px 11px">
+<div style="font-size:10.5px;color:var(--color-neutral-500);font-weight:700;letter-spacing:.04em">{{ t.k }}</div>
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:19px;margin-top:5px;color:{{ t.c }}">{{ t.v }}</div>
+<div style="font-size:10.5px;color:var(--color-neutral-600);margin-top:2px">{{ t.s }}</div>
+</div>
+</sc-for>
+</div>
+
+<div style="background:var(--color-neutral-900);border:1px solid rgba(245,234,216,.1);border-radius:20px;padding:15px 15px 8px;margin-top:10px">
+<div style="display:flex;align-items:center;justify-content:space-between">
+<div style="font-size:12.5px;font-weight:700;color:var(--color-bg)">מדד הדיור מול שכר דירה</div>
+<div style="display:flex;gap:12px">
+<span style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--color-neutral-500)"><span style="width:9px;height:9px;border-radius:999px;background:var(--color-accent-400)"></span>בעלות</span>
+<span style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--color-neutral-500)"><span style="width:9px;height:9px;border-radius:999px;background:var(--color-accent-2-400)"></span>שכירות</span>
+</div>
+</div>
+<svg viewBox="0 0 320 96" preserveAspectRatio="none" style="width:100%;height:96px;display:block;margin-top:10px">
+<path d="{{ idxLineB }}" fill="none" stroke="#f6a06b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="{{ rentLineB }}" fill="none" stroke="#aebf92" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 5"></path>
+</svg>
+<div style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--color-neutral-600);font-weight:600;padding:4px 0 10px"><span>{{ idxStart }}</span><span>{{ idxPeriod }}</span></div>
+</div>
+
+<div style="display:flex;align-items:baseline;justify-content:space-between;margin:22px 0 4px">
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:18px">אזורים במעקב</div>
+<span style="font-size:11.5px;color:var(--color-neutral-500)">חציוני · ₪/מ״ר · שינוי</span>
+</div>
+<div>
+<sc-for list="{{ darkAreas }}" as="a" hint-placeholder-count="5">
+<button onClick="{{ a.open }}" style="display:flex;align-items:center;gap:12px;width:100%;text-align:right;cursor:pointer;border:0;border-bottom:1px solid rgba(245,234,216,.09);background:transparent;padding:14px 2px;font-family:'Assistant',sans-serif" style-hover="background:rgba(245,234,216,.04)">
+<div style="flex:1;min-width:0">
+<div style="font-weight:700;font-size:14.5px;color:var(--color-bg);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ a.name }}</div>
+<div style="font-size:11.5px;color:var(--color-neutral-600);margin-top:2px">{{ a.city }} · {{ a.psm }} ₪/מ״ר</div>
+</div>
+<svg viewBox="0 0 72 30" preserveAspectRatio="none" style="width:72px;height:30px;flex:none;display:block">
+<path d="{{ a.spark }}" fill="none" stroke="{{ a.dcolor }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<div style="text-align:left;flex:none;min-width:92px">
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:16px;color:var(--color-bg)">{{ a.price }}</div>
+<div style="font-size:12px;font-weight:700;color:{{ a.dcolor }};margin-top:1px">{{ a.delta }}</div>
+</div>
+</button>
+</sc-for>
+</div>
+
+</div>
+<div style="position:absolute;right:14px;left:14px;bottom:14px;height:62px;border-radius:20px;background:var(--color-neutral-900);border:1px solid rgba(245,234,216,.12);display:flex;align-items:center;padding:0 6px;z-index:5">
+<sc-for list="{{ navB }}" as="t" hint-placeholder-count="4">
+<button onClick="{{ t.go }}" style="flex:1;height:48px;border:0;cursor:pointer;background:transparent;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:{{ t.fg }};font-family:'Assistant',sans-serif;font-size:10.5px;font-weight:700;transition:color .3s ease">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;flex:none"><sc-for list="{{ t.icon }}" as="p" hint-placeholder-count="2"><path d="{{ p }}"></path></sc-for></svg>
+<span>{{ t.label }}</span>
+<span style="width:16px;height:2px;border-radius:999px;background:{{ t.bar }};transition:background .3s ease"></span>
+</button>
+</sc-for>
+</div>
+</div>
+</x-import>
+</div>
+
+<div class="dv-opt" id="2c">
+<div class="dv-olabel"><a class="dv-oid" href="#2c">2c</a><span><b>מסמך</b> — typographic and near-white. Hairline rules instead of cards, sage used sparingly, numbers carrying the hierarchy. Feels like an official record, which suits data coming straight from רשות המסים and the למ״ס.</span></div>
+<x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" hint-size="428px,908px">
+<div dir="rtl" style="height:100%;position:relative;overflow:hidden;background:var(--color-neutral-100);color:var(--color-text);font-family:'Assistant',sans-serif">
+<div class="bt-scroll" style="position:absolute;inset:0;overflow-y:auto;padding:22px 22px 112px;box-sizing:border-box">
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;border-bottom:2px solid var(--color-text);padding-bottom:14px">
+<div>
+<div style="font-size:10.5px;letter-spacing:.14em;font-weight:700;color:var(--color-accent-2)">נדל״ן טרקר</div>
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:26px;line-height:1.1;margin-top:5px">המעקב שלי</div>
+</div>
+<button style="border:0;background:transparent;cursor:pointer;color:var(--color-neutral-700);padding:4px;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" style="width:19px;height:19px;flex:none"><path d="M20 7h-9"></path><path d="M14 17H5"></path><path d="M17 14a3 3 0 1 0 0 6 3 3 0 1 0 0-6"></path><path d="M7 4a3 3 0 1 0 0 6 3 3 0 1 0 0-6"></path></svg></button>
+</div>
+
+<div style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 0 14px;border-bottom:1px solid var(--color-neutral-300)">
+<div>
+<div style="font-size:11px;letter-spacing:.09em;font-weight:700;color:var(--color-accent-2)">מדד מחירי הדירות</div>
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:34px;line-height:1;margin-top:6px">{{ idxValue }}</div>
+<div style="font-size:12px;color:var(--color-neutral-700);margin-top:4px">{{ idxPeriod }} · שנתי {{ idxYoy }} · חודשי {{ idxMom }}</div>
+</div>
+<svg viewBox="0 0 110 60" preserveAspectRatio="none" style="width:110px;height:60px;flex:none;display:block">
+<path d="{{ idxLineC }}" fill="none" stroke="#7a8a5e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+
+<div style="font-size:11px;letter-spacing:.11em;font-weight:700;color:var(--color-accent-2);margin:22px 0 2px">אזורים במעקב</div>
+<div>
+<sc-for list="{{ docAreas }}" as="a" hint-placeholder-count="5">
+<button onClick="{{ a.open }}" style="display:block;width:100%;text-align:right;cursor:pointer;border:0;border-bottom:1px solid var(--color-neutral-300);background:transparent;padding:15px 0;font-family:'Assistant',sans-serif" style-hover="background:var(--color-neutral-200)">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px">
+<div style="font-weight:700;font-size:15px;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ a.name }}</div>
+<div style="font-family:'Rubik',sans-serif;font-weight:600;font-size:19px;flex:none">{{ a.price }}</div>
+</div>
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-top:4px">
+<div style="font-size:12px;color:var(--color-neutral-700)">{{ a.city }} · {{ a.deals }} עסקאות · {{ a.psm }} ₪/מ״ר</div>
+<div style="font-size:12.5px;font-weight:700;color:{{ a.dcolor }};flex:none">{{ a.delta }}</div>
+</div>
+</button>
+</sc-for>
+</div>
+
+<div style="margin-top:26px;border:1px solid var(--color-neutral-300);border-radius:4px;padding:14px 15px">
+<div style="font-size:11px;letter-spacing:.09em;font-weight:700;color:var(--color-accent-2)">מקורות</div>
+<div style="font-size:12.5px;line-height:1.55;color:var(--color-neutral-800);margin-top:6px">נתוני העסקאות מרשות המסים דרך govmap.gov.il. מדדי הדיור מהלשכה המרכזית לסטטיסטיקה. האפליקציה אינה ייעוץ השקעות.</div>
+</div>
+
+</div>
+<div style="position:absolute;right:0;left:0;bottom:0;height:70px;background:var(--color-neutral-100);border-top:1px solid var(--color-text);display:flex;align-items:stretch;z-index:5">
+<sc-for list="{{ navC }}" as="t" hint-placeholder-count="4">
+<button onClick="{{ t.go }}" style="flex:1;border:0;border-left:1px solid var(--color-neutral-300);cursor:pointer;background:{{ t.bg }};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding-bottom:8px;color:{{ t.fg }};font-family:'Assistant',sans-serif;font-size:11px;font-weight:700;transition:background .3s ease,color .3s ease">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" style="width:19px;height:19px;flex:none"><sc-for list="{{ t.icon }}" as="p" hint-placeholder-count="2"><path d="{{ p }}"></path></sc-for></svg>
+<span>{{ t.label }}</span>
+</button>
+</sc-for>
+</div>
+</div>
+</x-import>
+</div>
+
+</div>
+<p class="dv-next">Next: pick a direction and I'll build the whole flow in it — חיפוש with autocomplete, מגמות, מפה, השוואה, מדד הדיור and the empty/stale/error states. Or say <a class="dv-oid" href="#2a">2a</a> <a class="dv-oid" href="#2b">2b</a> to see them crossed. I can also lay out the iPhone and desktop-web versions of whichever wins.</p>
+</section>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showTrendColors&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Data display&quot;},&quot;showStaleBanner&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;States&quot;}}">
+const AREAS = [
+  { name: 'רמת אביב ג׳', city: 'תל אביב–יפו', price: 4320000, psm: 52400, delta: 2.4, deals: 38, bell: true,
+    hist: [3.92,3.96,3.99,4.02,4.0,4.06,4.09,4.07,4.12,4.16,4.19,4.24,4.27,4.26,4.3,4.32] },
+  { name: 'הדר הכרמל', city: 'חיפה', price: 1180000, psm: 13900, delta: 5.1, deals: 64, bell: true,
+    hist: [1.02,1.03,1.05,1.04,1.07,1.09,1.08,1.11,1.12,1.14,1.13,1.15,1.16,1.17,1.17,1.18] },
+  { name: 'הרצל והסביבה', city: 'כפר סבא', price: 2940000, psm: 31200, delta: -0.7, deals: 22, bell: false,
+    hist: [2.99,3.0,2.98,2.99,2.97,2.98,2.96,2.95,2.96,2.94,2.95,2.93,2.94,2.92,2.93,2.94] },
+  { name: 'רמת בית שמש א׳', city: 'בית שמש', price: 2150000, psm: 24600, delta: 1.8, deals: 41, bell: false,
+    hist: [2.04,2.05,2.07,2.06,2.08,2.09,2.11,2.1,2.12,2.13,2.12,2.14,2.13,2.15,2.14,2.15] },
+  { name: 'קריית יובל', city: 'ירושלים', price: 2480000, psm: 29800, delta: 0.9, deals: 29, bell: false,
+    hist: [2.41,2.42,2.44,2.43,2.45,2.44,2.46,2.47,2.46,2.48,2.47,2.49,2.48,2.47,2.48,2.48] }
+];
+// 132 months (7/2015 → 6/2026) so "5 שנים" / "10 שנים" / "הכל" each show a
+// genuinely different span. Compound growth with a small seasonal wobble.
+const series = (from, to, wob) => Array.from({ length: 132 }, (_, i) =>
+  +(from * Math.pow(to / from, i / 131) + Math.sin(i * 0.9) * wob).toFixed(1));
+const IDX = series(78, 131.9, 0.32);
+const RENT = series(84, 119.4, 0.24);
+
+const nf = new Intl.NumberFormat('en-US');
+// U+2066 LRI … U+2069 PDI — isolates numeric runs so signs and ₪ keep their
+// side inside the RTL flow (the app does the same with an RLM in Formatters.kt).
+const iso = t => '\u2066' + t + '\u2069';
+const money = n => iso(nf.format(n) + ' ₪');
+const psmL = n => iso((n / 1000).toFixed(1).replace(/\.0$/, '') + 'K');
+const pct = d => iso((d > 0 ? '+' : d < 0 ? '−' : '') + Math.abs(d).toFixed(1) + '%');
+
+function line(vals, w, h, pad) {
+  const lo = Math.min(...vals), hi = Math.max(...vals), r = (hi - lo) || 1;
+  const pts = vals.map((v, i) => [i / (vals.length - 1) * w, pad + (1 - (v - lo) / r) * (h - pad * 2)]);
+  let d = 'M' + pts[0][0].toFixed(1) + ' ' + pts[0][1].toFixed(1);
+  for (let i = 1; i < pts.length; i++) {
+    const p = pts[i - 1], c = pts[i], mx = (p[0] + c[0]) / 2;
+    d += ' C' + mx.toFixed(1) + ' ' + p[1].toFixed(1) + ',' + mx.toFixed(1) + ' ' + c[1].toFixed(1) + ',' + c[0].toFixed(1) + ' ' + c[1].toFixed(1);
+  }
+  return { d, area: d + ' L' + w + ' ' + h + ' L0 ' + h + ' Z' };
+}
+
+// רמת אביב ג׳ — monthly medians (₪M) and deal counts, 18 months.
+const TR_MED = [4.02,3.94,4.11,4.06,4.18,4.09,4.22,4.14,4.27,4.19,4.31,4.24,4.36,4.28,4.33,4.41,4.30,4.32];
+const TR_PSM = [48.1,47.4,49.2,48.6,50.1,49.3,50.8,49.9,51.4,50.6,51.9,51.1,52.6,51.8,52.2,53.0,52.1,52.4];
+const TR_CNT = [4,2,5,3,6,4,7,3,5,4,8,5,6,3,7,4,6,2];
+const TR_LBL = ['1/25','3/25','5/25','7/25','9/25','11/25','1/26','3/26','5/26'];
+// כפר סבא, for the comparison overlay.
+const CMP_B = [2.99,3.00,2.98,2.99,2.97,2.98,2.96,2.95,2.96,2.94,2.95,2.93,2.94,2.92,2.93,2.94,2.92,2.94];
+
+function bars(vals, w, h, gap) {
+  const hi = Math.max(...vals) || 1;
+  const bw = (w - gap * (vals.length - 1)) / vals.length;
+  return vals.map((v, i) => {
+    const bh = Math.max(2, (v / hi) * h);
+    return { x: (i * (bw + gap)).toFixed(1), y: (h - bh).toFixed(1), w: bw.toFixed(1), h: bh.toFixed(1) };
+  });
+}
+
+// רמת אביב ג׳ — a fuller set, because a desktop table shows 14 rows where the
+// phone shows three. Density is the whole argument for the web build.
+const DESK = [
+  ['12.6.2026', 'ברודצקי 18', 4, 96, 3, 4250000, '6631/142/12', 62, 26],
+  ['9.6.2026', 'אינשטיין 42', 3.5, 84, 5, 3880000, '6631/98/5', 44, 38],
+  ['2.6.2026', 'לוי אשכול 60', 5, 128, 8, 5600000, '6630/211/24', 71, 19],
+  ['28.5.2026', 'טאגור 24', 3, 72, 1, 3150000, '6631/77/2', 33, 52],
+  ['21.5.2026', 'ברודצקי 7', 4, 92, 2, 4090000, '6631/140/8', 58, 31],
+  ['17.5.2026', 'חיים לבנון 90', 4.5, 108, 6, 4870000, '6630/188/17', 24, 44],
+  ['11.5.2026', 'אינשטיין 15', 3, 68, 4, 3020000, '6631/91/3', 49, 61],
+  ['4.5.2026', 'ז׳בוטינסקי 122', 5, 134, 11, 6120000, '6629/44/31', 78, 40],
+  ['27.4.2026', 'טאגור 8', 3.5, 79, 2, 3410000, '6631/72/6', 29, 70],
+  ['19.4.2026', 'לוי אשכול 22', 4, 94, 7, 4310000, '6630/203/14', 66, 57],
+  ['12.4.2026', 'ברודצקי 31', 2.5, 58, 1, 2640000, '6631/145/1', 39, 78],
+  ['5.4.2026', 'חיים לבנון 44', 4, 99, 3, 4420000, '6630/176/9', 18, 33],
+  ['29.3.2026', 'אינשטיין 68', 5, 121, 9, 5340000, '6631/104/22', 53, 15],
+  ['22.3.2026', 'טאגור 40', 3, 74, 5, 3190000, '6631/81/11', 72, 66]
+];
+
+class Component extends DCLogic {
+  state = { range: 1, tab: 0, resTab: 0, scope: 0, radius: 300, period: 2, sheet: false, macroRange: 1,
+            sortKey: 0, sortDir: -1, hover: -1, picked: [0, 2] };
+
+  sortBy = k => this.setState(st => ({ sortKey: k, sortDir: st.sortKey === k ? -st.sortDir : -1 }));
+
+  renderVals() {
+    const s = this.state;
+    const colored = this.props.showTrendColors ?? true;
+    const stale = this.props.showStaleBanner ?? false;
+    const up = colored ? '#3d472b' : '#645c50';
+    const dn = colored ? '#b2622d' : '#645c50';
+    const upD = colored ? '#aebf92' : '#a19786';
+    const dnD = colored ? '#f6a06b' : '#a19786';
+
+    const cut = s.range === 0 ? 12 : s.range === 1 ? 60 : IDX.length;
+    const idxSlice = IDX.slice(IDX.length - cut);
+    const heroA = line(idxSlice, 320, 78, 8);
+    const heroB = line(IDX, 320, 96, 8);
+    const heroBr = line(RENT.map((v, i) => v + (IDX[i] - RENT[i]) * 0), 320, 96, 8);
+    const heroC = line(IDX.slice(-16), 110, 60, 5);
+
+    const mk = (dark, w, h) => AREAS.map(a => ({
+      name: a.name, city: a.city, deals: a.deals, bell: a.bell,
+      price: money(a.price), psm: psmL(a.psm), delta: pct(a.delta),
+      dcolor: a.delta >= 0 ? (dark ? upD : up) : (dark ? dnD : dn),
+      spark: line(a.hist, w, h, 4).d,
+      open: () => {}
+    }));
+
+    const IC = {
+      eye: ["M2.06 12.35a1 1 0 0 1 0-.7 10.75 10.75 0 0 1 19.88 0 1 1 0 0 1 0 .7 10.75 10.75 0 0 1-19.88 0","M12 9a3 3 0 1 0 0 6 3 3 0 1 0 0-6"],
+      search: ["M11 3a8 8 0 1 0 0 16 8 8 0 1 0 0-16","M21 21l-4.35-4.35"],
+      bars: ["M3 3v16a2 2 0 0 0 2 2h16","M18 17V9","M13 17V5","M8 17v-3"],
+      compare: ["M8 3 4 7l4 4","M4 7h16","m16 21 4-4-4-4","M20 17H4"]
+    };
+    const navItems = [['מעקב', IC.eye], ['חיפוש', IC.search], ['מדד', IC.bars], ['השוואה', IC.compare]];
+    const navAt = active => navItems.map(([label, icon]) => ({
+      label, icon, go: () => {},
+      bg: navItems[active][0] === label ? '#c67139' : 'transparent',
+      fg: navItems[active][0] === label ? '#fff' : '#a19786',
+      w: navItems[active][0] === label ? '80px' : '0px'
+    }));
+
+    const tm = line(TR_MED, 300, 120, 10);
+    const tp = line(TR_PSM, 300, 120, 10);
+    const ca = line(TR_MED, 300, 110, 8);
+    const cb = line(CMP_B, 300, 110, 8);
+    const macroCut = s.macroRange === 0 ? 60 : s.macroRange === 1 ? 120 : IDX.length;
+    const mIdx = line(IDX.slice(-macroCut), 300, 100, 8);
+    const mRent = line(RENT.slice(-macroCut), 300, 100, 8);
+
+    // ₪/m² quintile scale, matching MapTab.kt's SCALE_COLORS.
+    const SCALE = ['#2E7D32', '#9BC53D', '#F2C14E', '#EF8354', '#C5283D'];
+    const dotSpec = [[24,18],[41,31],[58,22],[33,44],[67,47],[19,58],[48,61],[72,35],[38,72],[61,77],[27,84],[54,38],[80,62],[44,14],[15,38]];
+
+    return {
+      navHome: navAt(0), navSearch: navAt(1), navMacro: navAt(2), navCompare: navAt(3),
+
+      searchText: 'רמת אביב',
+      candidates: [
+        { t: 'רמת אביב ג׳, תל אביב–יפו', k: 'שכונה' },
+        { t: 'רמת אביב, תל אביב–יפו', k: 'שכונה' },
+        { t: 'שדרות רמת אביב, תל אביב–יפו', k: 'רחוב' },
+        { t: 'רמת אביב החדשה, תל אביב–יפו', k: 'שכונה' }
+      ],
+      scopes: ['רחוב', 'שכונה', 'יישוב', 'רדיוס'].map((label, i) => ({
+        label, pick: () => this.setState({ scope: i }),
+        bg: s.scope === i ? '#201e1d' : 'transparent',
+        fg: s.scope === i ? '#f5ead8' : '#645c50',
+        bd: s.scope === i ? '#201e1d' : '#dcd3c4'
+      })),
+      isRadius: s.scope === 3,
+      radius: s.radius,
+      radiusLabel: 'רדיוס: ' + iso(String(s.radius)) + ' מטר',
+      setRadius: e => this.setState({ radius: Math.round(+e.target.value / 50) * 50 }),
+      periods: ['הכל', 'שנה', '3 שנים', '5 שנים'].map((label, i) => ({
+        label, pick: () => this.setState({ period: i }),
+        bg: s.period === i ? '#c67139' : 'transparent',
+        fg: s.period === i ? '#fff' : '#645c50',
+        bd: s.period === i ? '#c67139' : '#dcd3c4'
+      })),
+
+      trendMedian: tm.d, trendMedianArea: tm.area, trendPsm: tp.d,
+      trendBars: bars(TR_CNT, 300, 92, 6),
+      trendLabels: TR_LBL.map(iso),
+      trendMedRange: [iso('4.41M'), iso('3.94M')],
+      trendPsmRange: [iso('53.0K'), iso('47.4K')],
+
+      mapDots: dotSpec.map((p, i) => ({
+        x: p[0] + '%', y: p[1] + '%',
+        c: SCALE[[0,2,1,3,4,0,2,3,1,4,0,2,4,1,3][i]],
+        r: (9 + (i % 3) * 1.5) + 'px'
+      })),
+      mapScale: SCALE,
+
+      cmpLineA: ca.d, cmpLineB: cb.d,
+      cmpRows: [
+        { k: 'מחיר חציוני', a: iso('4.32M ₪'), b: iso('2.94M ₪') },
+        { k: 'חציוני למ״ר', a: iso('52.4K ₪'), b: iso('31.2K ₪') },
+        { k: 'שינוי שנתי', a: pct(2.4), b: pct(-0.7) },
+        { k: 'עסקאות', a: iso('38'), b: iso('22') },
+        { k: 'שטח חציוני', a: iso('92 מ״ר'), b: iso('108 מ״ר') }
+      ],
+
+      macroRanges: ['5 שנים', '10 שנים', 'הכל'].map((label, i) => ({
+        label, pick: () => this.setState({ macroRange: i }),
+        bg: s.macroRange === i ? '#c67139' : 'transparent',
+        fg: s.macroRange === i ? '#fff' : '#645c50',
+        bd: s.macroRange === i ? '#c67139' : '#dcd3c4'
+      })),
+      macroSections: [
+        { title: 'מדד מחירי הדירות (בעלות)', d: mIdx.d, area: mIdx.area, stroke: '#c67139',
+          stats: [
+            { k: 'ערך אחרון', v: iso(IDX[IDX.length - 1].toFixed(1)), s: iso('6/2026') },
+            { k: 'שינוי שנתי', v: pct(((IDX[IDX.length - 1] / IDX[IDX.length - 13]) - 1) * 100), s: '' },
+            { k: 'שינוי חודשי', v: pct(((IDX[IDX.length - 1] / IDX[IDX.length - 2]) - 1) * 100), s: '' }
+          ] },
+        { title: 'מדד שכר הדירה (שכירות)', d: mRent.d, area: mRent.area, stroke: '#7a8a5e',
+          stats: [
+            { k: 'ערך אחרון', v: iso(RENT[RENT.length - 1].toFixed(1)), s: iso('6/2026') },
+            { k: 'שינוי שנתי', v: pct(((RENT[RENT.length - 1] / RENT[RENT.length - 13]) - 1) * 100), s: '' },
+            { k: 'שינוי חודשי', v: pct(((RENT[RENT.length - 1] / RENT[RENT.length - 2]) - 1) * 100), s: '' }
+          ] }
+      ],
+
+      sheetY: s.sheet ? '0%' : '100%',
+      openSheet: () => this.setState({ sheet: true }),
+      closeSheet: () => this.setState({ sheet: false }),
+      sheetDeal: {
+        price: money(4250000), date: iso('12.6.2026'), address: 'ברודצקי 18',
+        city: 'תל אביב–יפו · רמת אביב ג׳',
+        stats: [{ k: 'חדרים', v: iso('4') }, { k: 'שטח', v: iso('96 מ״ר') }, { k: 'קומה', v: iso('3') }],
+        psm: iso('44,270 ₪'),
+        rows: [
+          { k: 'סוג נכס', v: 'דירה' },
+          { k: 'גוש / חלקה', v: iso('6631 / 142 / 12') },
+          { k: 'מול חציון השכונה', v: iso('−1.6%') },
+          { k: 'מול חציון למ״ר', v: iso('−15.5%') }
+        ],
+        near: [
+          { a: 'ברודצקי 22', m: iso('4 חד׳ · 94 מ״ר · 3/2026'), p: iso('4.31M ₪') },
+          { a: 'אינשטיין 42', m: iso('3.5 חד׳ · 84 מ״ר · 6/2026'), p: iso('3.88M ₪') },
+          { a: 'טאגור 24', m: iso('3 חד׳ · 72 מ״ר · 5/2026'), p: iso('3.15M ₪') }
+        ]
+      },
+
+      count: iso(String(AREAS.length)),
+      // ── desktop web ──
+      deskCols: [
+        { k: 'תאריך', i: 0 }, { k: 'כתובת', i: 1 }, { k: 'חדרים', i: 2 },
+        { k: 'מ״ר', i: 3 }, { k: 'קומה', i: 4 }, { k: 'מחיר', i: 5 }, { k: '₪ למ״ר', i: 9 }
+      ].map(c => ({
+        k: c.k, sort: () => this.sortBy(c.i),
+        arrow: s.sortKey === c.i ? (s.sortDir === -1 ? '▾' : '▴') : '',
+        fg: s.sortKey === c.i ? '#201e1d' : '#82796a',
+        align: c.i === 1 ? 'right' : 'left'
+      })),
+      deskRows: (() => {
+        const rows = DESK.map((r, i) => ({ r, i, psm: r[5] / r[3] }));
+        const k = s.sortKey;
+        rows.sort((a, b) => {
+          const va = k === 9 ? a.psm : k === 0 ? a.i * -1 : a.r[k];
+          const vb = k === 9 ? b.psm : k === 0 ? b.i * -1 : b.r[k];
+          if (typeof va === 'string') return s.sortDir * va.localeCompare(vb, 'he');
+          return s.sortDir * (va - vb);
+        });
+        return rows.map(({ r, i, psm }) => ({
+          date: iso(r[0]), address: r[1], rooms: iso(String(r[2])), sqm: iso(String(r[3])),
+          floor: iso(String(r[4])), price: money(r[5]),
+          psm: iso(Math.round(psm).toLocaleString('en-US') + ' ₪'),
+          gush: iso(r[6]),
+          bg: s.hover === i ? '#eee7db' : 'transparent',
+          on: () => this.setState({ hover: i }),
+          off: () => this.setState({ hover: -1 })
+        }));
+      })(),
+      deskDots: DESK.map((r, i) => {
+        const psm = r[5] / r[3];
+        const all = DESK.map(d => d[5] / d[3]).sort((a, b) => a - b);
+        const rank = all.findIndex(v => v >= psm);
+        const bucket = Math.min(4, Math.floor(rank * 5 / all.length));
+        const hot = s.hover === i;
+        return {
+          x: r[7] + '%', y: r[8] + '%',
+          c: ['#2E7D32', '#9BC53D', '#F2C14E', '#EF8354', '#C5283D'][bucket],
+          size: hot ? '26px' : '15px',
+          bd: hot ? '3px solid #201e1d' : '2px solid rgba(255,255,255,.8)',
+          z: hot ? 3 : 1,
+          on: () => this.setState({ hover: i }),
+          off: () => this.setState({ hover: -1 })
+        };
+      }),
+      deskAreas: AREAS.map((a, i) => ({
+        name: a.name, city: a.city, price: money(a.price), delta: pct(a.delta),
+        dcolor: a.delta >= 0 ? up : dn, deals: iso(String(a.deals)),
+        spark: line(a.hist, 64, 24, 3).d,
+        bg: i === 0 ? '#eee7db' : 'transparent',
+        bd: i === 0 ? '#c67139' : 'transparent',
+        checked: s.picked.includes(i),
+        box: s.picked.includes(i) ? '#c67139' : 'transparent',
+        boxBd: s.picked.includes(i) ? '#c67139' : '#c0b6a5',
+        toggle: () => this.setState(st => ({
+          picked: st.picked.includes(i) ? st.picked.filter(x => x !== i)
+            : st.picked.length < 2 ? [...st.picked, i] : [st.picked[1], i]
+        }))
+      })),
+      deskPickedCount: s.picked.length,
+      deskCanCompare: s.picked.length === 2,
+      deskCompareLabel: s.picked.length === 2
+        ? 'השוואת ' + AREAS[s.picked[0]].name + ' מול ' + AREAS[s.picked[1]].name
+        : 'בחרו שני אזורים להשוואה',
+      deskSummary: [
+        { k: 'מחיר חציוני', v: iso('4.32M ₪'), d: pct(2.4), c: up },
+        { k: 'חציוני למ״ר', v: iso('52.4K ₪'), d: pct(1.9), c: up },
+        { k: 'עסקאות', v: iso('38'), d: iso('5 שנים'), c: '#82796a' },
+        { k: 'שטח חציוני', v: iso('92 מ״ר'), d: iso('3.5–5 חד׳'), c: '#82796a' }
+      ],
+      deskTrend: line(TR_MED, 300, 70, 6).d,
+
+      seedAreas: [
+        { n: 'רמת אביב ג׳', c: 'תל אביב–יפו' },
+        { n: 'הדר הכרמל', c: 'חיפה' },
+        { n: 'קריית יובל', c: 'ירושלים' },
+        { n: 'רמת בית שמש א׳', c: 'בית שמש' },
+        { n: 'נווה שאנן', c: 'חיפה' },
+        { n: 'הרצל והסביבה', c: 'כפר סבא' }
+      ],
+
+      stale,
+      idxValue: iso(IDX[IDX.length - 1].toFixed(1)),
+      idxYoy: pct(((IDX[IDX.length - 1] / IDX[IDX.length - 13]) - 1) * 100),
+      idxMom: pct(((IDX[IDX.length - 1] / IDX[IDX.length - 2]) - 1) * 100),
+      rentYoy: pct(((RENT[RENT.length - 1] / RENT[RENT.length - 13]) - 1) * 100),
+      idxPeriod: iso('6/2026'), idxStart: iso('7/2015'),
+      idxLine: heroA.d, idxArea: heroA.area,
+      idxLineB: heroB.d, rentLineB: heroBr.d, idxLineC: heroC.d,
+      idxRanges: ['שנה', '5 שנים', 'הכל'].map((label, i) => ({
+        label, pick: () => this.setState({ range: i }),
+        bg: s.range === i ? '#c67139' : 'rgba(245,234,216,.1)',
+        fg: s.range === i ? '#fff' : '#c0b6a5'
+      })),
+      warmAreas: mk(false, 96, 34),
+      darkAreas: mk(true, 72, 30),
+      docAreas: mk(false, 0, 0).map(a => ({ ...a, spark: '' })),
+      darkTiles: [
+        { k: 'מדד הדיור', v: iso(IDX[IDX.length - 1].toFixed(1)), s: 'שנתי ' + pct(((IDX[IDX.length - 1] / IDX[IDX.length - 13]) - 1) * 100), c: '#f5ead8' },
+        { k: 'עסקאות החודש', v: iso('47'), s: iso('+9') + ' מהחודש שעבר', c: upD },
+        { k: 'האזור החם', v: iso('+5.1%'), s: 'הדר הכרמל', c: upD }
+      ],
+      navA: navItems.map(([label, icon], i) => ({
+        label, icon, go: () => this.setState({ tab: i }),
+        bg: s.tab === i ? '#c67139' : 'transparent',
+        fg: s.tab === i ? '#fff' : '#a19786',
+        w: s.tab === i ? '80px' : '0px'
+      })),
+      navB: navItems.map(([label, icon], i) => ({
+        label, icon, go: () => this.setState({ tab: i }),
+        fg: s.tab === i ? '#f6a06b' : '#82796a',
+        bar: s.tab === i ? '#f6a06b' : 'transparent'
+      })),
+      navC: navItems.map(([label, icon], i) => ({
+        label, icon, go: () => this.setState({ tab: i }),
+        bg: s.tab === i ? '#201e1d' : 'transparent',
+        fg: s.tab === i ? '#f9f4ed' : '#645c50'
+      })),
+      summary: [
+        { k: 'מחיר חציוני', v: iso('4.32M ₪') },
+        { k: 'חציוני למ״ר', v: iso('52.4K ₪') },
+        { k: 'שינוי שנתי', v: iso('+2.4%') }
+      ],
+      deals: [
+        { price: money(4250000), date: '12.6.2026', address: 'ברודצקי 18, תל אביב–יפו',
+          chips: ['4 חד׳', '96 מ״ר', 'קומה 3', iso('44.3K') + ' ₪/מ״ר'],
+          meta: 'דירה · רמת אביב ג׳ · גוש/חלקה 6631/142/12' },
+        { price: money(3880000), date: '4.6.2026', address: 'אינשטיין 42, תל אביב–יפו',
+          chips: ['3.5 חד׳', '84 מ״ר', 'קומה 5', iso('46.2K') + ' ₪/מ״ר'],
+          meta: 'דירה · רמת אביב ג׳ · גוש/חלקה 6631/98/5' },
+        { price: money(5600000), date: '28.5.2026', address: 'לוי אשכול 60, תל אביב–יפו',
+          chips: ['5 חד׳', '128 מ״ר', 'קומה 8', iso('43.8K') + ' ₪/מ״ר'],
+          meta: 'דירה · רמת אביב ג׳ · גוש/חלקה 6630/211/24' },
+        { price: money(3150000), date: '19.5.2026', address: 'טאגור 24, תל אביב–יפו',
+          chips: ['3 חד׳', '72 מ״ר', 'קומה 1', iso('43.8K') + ' ₪/מ״ר'],
+          meta: 'דירה בבית קומות · רמת אביב ג׳ · גוש/חלקה 6631/77/2' }
+      ]
+    };
+  }
+}
+
+</script>
+</body>
+</html>
