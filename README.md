@@ -2,6 +2,10 @@
 
 Android app (Hebrew, RTL) for tracking Israeli real-estate data straight from official government sources: actual transaction prices, trend graphs, and the CBS dwelling-price index — with saved searches and offline caching.
 
+## Install
+
+Grab the APK from the [latest release](../../releases/latest) and open it on an Android 8.0+ device — you'll need to allow installation from an unknown source. Installing over an earlier version updates it in place.
+
 ## Features
 
 - **מעקב (home)** — the app opens on what you're already tracking: the CBS index as a hero card over your saved areas, each with its median price, ₪/m², 12-month sparkline and change. Tap an area to re-run it; toggle the bell for daily alerts.
