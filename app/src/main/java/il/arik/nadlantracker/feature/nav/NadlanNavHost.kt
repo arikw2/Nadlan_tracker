@@ -145,9 +145,18 @@ fun NadlanNavHost() {
     }
 }
 
+/**
+ * Switch bottom-nav tabs, keeping Home as the single root.
+ *
+ * Pops to Home explicitly rather than to `graph.startDestinationId`: on a first
+ * run the graph starts at Onboarding, which onboarding itself pops inclusively,
+ * so popping to the start destination would find nothing on the back stack and
+ * silently do nothing — tabs would stack up and system-back would walk through
+ * every tab visited instead of returning Home.
+ */
 private fun NavHostController.navigateTop(route: Any) {
     navigate(route) {
-        popUpTo(graph.startDestinationId) { saveState = true }
+        popUpTo<NavRoutes.Home> { saveState = true }
         launchSingleTop = true
         restoreState = true
     }
