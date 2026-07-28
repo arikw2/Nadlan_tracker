@@ -4,6 +4,10 @@ import kotlinx.serialization.Serializable
 
 object NavRoutes {
 
+    /** Start destination — the tracked-areas home (מעקב). */
+    @Serializable
+    object Home
+
     @Serializable
     object Search
 
@@ -11,16 +15,17 @@ object NavRoutes {
     @Serializable
     data class Results(val queryJson: String, val forceRefresh: Boolean = false, val favoriteId: Long = -1)
 
+    /** Compare is its own tab now — the two areas are picked inside the screen. */
     @Serializable
-    object Favorites
-
-    /** Two Json-encoded SearchQuery values to overlay on shared charts. */
-    @Serializable
-    data class Compare(val queryJsonA: String, val queryJsonB: String)
+    object Compare
 
     @Serializable
     object Macro
 
     @Serializable
     object Settings
+
+    /** First-run intro; shown once before any area is tracked. */
+    @Serializable
+    object Onboarding
 }

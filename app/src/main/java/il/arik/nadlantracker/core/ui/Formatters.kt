@@ -30,7 +30,9 @@ object Formatters {
 
     fun percent(value: Double): String {
         val sign = if (value > 0) "+" else ""
-        return "$sign${"%.1f".format(value)}%"
+        // Wrap the numeric run in isolates so RTL layout doesn't reorder
+        // "+3.5%" into "3.5%+". First Strong Isolate open (U+2066) / Pop (U+2069).
+        return "⁦$sign${"%.1f".format(value)}%⁩"
     }
 
     private fun trimZero(value: Double): String {

@@ -4,18 +4,21 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Point
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.background
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.ui.draw.clip
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -95,50 +98,76 @@ internal fun MapTab(data: ResultsUiState.Data) {
         return
     }
 
-    Column(Modifier.fillMaxSize()) {
+    // The map fills the tab and rounds into the layout; the legend floats on top
+    // as a pill so it stops eating a strip of map.
+    Box(
+        Modifier
+            .fillMaxSize()
+            .padding(horizontal = 14.dp)
+            .padding(bottom = 14.dp)
+            .clip(RoundedCornerShape(22.dp)),
+    ) {
         // osmdroid renders tiles LTR; keep the map itself out of the RTL flip.
         CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
-            Box(Modifier.weight(1f)) {
-                AndroidView(
-                    modifier = Modifier.fillMaxSize(),
-                    factory = { context ->
-                        MapView(context).apply {
-                            setTileSource(TileSourceFactory.MAPNIK)
-                            setMultiTouchControls(true)
-                            minZoomLevel = 7.0
-                        }
-                    },
-                    update = { mapView ->
-                        mapView.overlays.removeAll { it is DealsOverlay }
-                        mapView.overlays.add(DealsOverlay(dots))
-                        val box = BoundingBox.fromGeoPoints(dots.map { it.geoPoint })
-                        mapView.post {
-                            mapView.zoomToBoundingBox(box.increaseByScale(1.3f), false)
-                            mapView.invalidate()
-                        }
-                    },
-                )
-            }
+            AndroidView(
+                modifier = Modifier.fillMaxSize(),
+                factory = { context ->
+                    MapView(context).apply {
+                        setTileSource(TileSourceFactory.MAPNIK)
+                        setMultiTouchControls(true)
+                        minZoomLevel = 7.0
+                    }
+                },
+                update = { mapView ->
+                    mapView.overlays.removeAll { it is DealsOverlay }
+                    mapView.overlays.add(DealsOverlay(dots))
+                    val box = BoundingBox.fromGeoPoints(dots.map { it.geoPoint })
+                    mapView.post {
+                        mapView.zoomToBoundingBox(box.increaseByScale(1.3f), false)
+                        mapView.invalidate()
+                    }
+                },
+            )
         }
-        Legend()
+        FloatingLegend(
+            Modifier
+                .align(Alignment.BottomCenter)
+                .padding(12.dp),
+        )
     }
 }
 
 @Composable
-private fun Legend() {
-    Row(
-        Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
-        verticalAlignment = Alignment.CenterVertically,
+private fun FloatingLegend(modifier: Modifier = Modifier) {
+    Surface(
+        modifier = modifier.fillMaxWidth(),
+        shape = CircleShape,
+        color = MaterialTheme.colorScheme.surfaceContainerLowest.copy(alpha = 0.94f),
+        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant),
+        shadowElevation = 4.dp,
     ) {
-        Text(stringResource(R.string.map_legend_cheap), style = MaterialTheme.typography.bodySmall)
-        SCALE_COLORS.forEach { color ->
-            Box(
-                Modifier
-                    .size(14.dp)
-                    .background(androidx.compose.ui.graphics.Color(color), CircleShape),
+        Row(
+            Modifier.padding(horizontal = 14.dp, vertical = 9.dp),
+            horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text(
+                stringResource(R.string.map_legend_cheap),
+                style = MaterialTheme.typography.labelMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            SCALE_COLORS.forEach { color ->
+                Box(
+                    Modifier
+                        .size(13.dp)
+                        .background(androidx.compose.ui.graphics.Color(color), CircleShape),
+                )
+            }
+            Text(
+                stringResource(R.string.map_legend_expensive),
+                style = MaterialTheme.typography.labelMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
         }
-        Text(stringResource(R.string.map_legend_expensive), style = MaterialTheme.typography.bodySmall)
     }
 }

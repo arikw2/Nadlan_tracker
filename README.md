@@ -4,14 +4,25 @@ Android app (Hebrew, RTL) for tracking Israeli real-estate data straight from of
 
 ## Features
 
+- **מעקב (home)** — the app opens on what you're already tracking: the CBS index as a hero card over your saved areas, each with its median price, ₪/m², 12-month sparkline and change. Tap an area to re-run it; toggle the bell for daily alerts.
 - **חיפוש עסקאות** — search real transactions by street, neighborhood, whole settlement, or radius around an address, using the public govmap.gov.il API that backs [nadlan.gov.il](https://www.nadlan.gov.il) (Israel Tax Authority data). Filter by period and room count; deal cards show price, ₪/m², rooms, floor, property type, neighborhood, and גוש/חלקה.
-- **מגמות** — charts per search: median price by month, median ₪/m², and monthly deal counts.
+- **עסקה** — tapping a deal opens a detail sheet: its ₪/m² against the surrounding median, the registry reference, the three nearest comparable sales, and a link to the official parcel page for construction year.
+- **מגמות** — charts per search: median price by month, median ₪/m², and monthly deal counts, each printing its own value range instead of a dense axis.
 - **מפה** — every search result also renders on an OpenStreetMap view (osmdroid, no API key), each deal a dot colored by ₪/m² quintile from green (cheap) to red (expensive), using the parcel centroid that govmap attaches to every deal.
 - **מדדי הדיור** — the CBS dwelling-price index (40010) *and* rent index (120460) from [api.cbs.gov.il](https://api.cbs.gov.il), with 5y/10y/full-history views and latest/YoY/MoM stats — buy vs. rent trends side by side.
-- **מועדפים** — save any search and re-run it later with one tap to get fresh data.
-- **השוואת אזורים** — pick two saved searches and overlay their median-price and ₪/m² trend lines on shared charts.
-- **התראות עסקאות** — toggle the bell on a favorite and a daily background check (WorkManager) notifies you when new transactions are registered in that area.
-- **Offline-friendly** — results are cached in Room for 24h; when the government source is down or rate-limits, the app serves the cached data with a clear banner.
+- **השוואת אזורים** — its own tab: tick two tracked areas, get their median-price lines overlaid plus a paired table of medians, ₪/m², area and deal counts.
+- **התראות עסקאות** — toggle the bell on a tracked area and a daily background check (WorkManager) notifies you when new transactions are registered there.
+- **פתיחה** — a first-run screen states the premise in one line and seeds a tracked area in one tap, instead of dropping a new user on an empty search field.
+- **Offline-friendly** — results are cached in Room for 24h; when the government source is down or rate-limits, the app serves the cached data with a banner that names the cause and offers a retry.
+
+## Design
+
+The UI follows a design handoff kept in [`handoff/`](handoff/) — open `handoff/Nadlan Tracker Redesign.dc.html` in a browser for the visual reference, and read `handoff/BRIEF.md` for the rationale. The direction is "Organic": a warm cream ground with terracotta primary and sage secondary, Rubik for display and Assistant for body (both OFL, both full Hebrew, bundled as static instances — see [`app/src/main/res/font/README.md`](app/src/main/res/font/README.md)), 22dp cards and pill-shaped controls.
+
+Two decisions worth knowing:
+
+- **`dynamicColor` is off.** With it on, Android 12+ replaced the palette with wallpaper-sampled colors, so almost nobody saw the app's own theme and the ₪/m² map scale had to fight whatever hue it landed next to. A data product needs a stable palette.
+- **Trend direction is sage/terracotta, not green/red.** A price rise is good news to a seller and bad to a buyer, so the palette doesn't editorialise — and it survives red-green color blindness. The five ₪/m² map quintile colors are unchanged: they're a data encoding, not brand color.
 
 ## Architecture
 
@@ -23,7 +34,9 @@ Single-module Kotlin app, package-by-feature, no backend server — the app talk
 | `core/database` | Room: cached deals, favorites, index points, cache metadata |
 | `data` | tolerant DTOs, mappers (incl. near-duplicate deal collapsing), repositories |
 | `domain` | `SearchQuery` (serializable, persisted by favorites), `TrendCalculator` |
-| `feature` | Compose screens: search, results (deals + trends), favorites, macro, settings |
+| `feature` | Compose screens: home, search, results (deals + trends + map + deal sheet), compare, macro, onboarding, settings |
+
+Bottom navigation is `מעקב · חיפוש · מדד · השוואה` as a floating pill; settings is a gear in the home header.
 
 Key libraries: Jetpack Compose (Material 3), Navigation-Compose type-safe routes, Room, Retrofit + kotlinx.serialization, Vico charts, coroutines.
 

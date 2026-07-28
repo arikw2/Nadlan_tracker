@@ -47,7 +47,8 @@ class ResultsViewModel(
     private val _uiState = MutableStateFlow<ResultsUiState>(ResultsUiState.Loading)
     val uiState: StateFlow<ResultsUiState> = _uiState.asStateFlow()
 
-    private val query: SearchQuery? =
+    /** Mutable so the thin-data edge state can widen the period in place. */
+    private var query: SearchQuery? =
         runCatching { json.decodeFromString(SearchQuery.serializer(), queryJson) }.getOrNull()
 
     init {
@@ -55,6 +56,20 @@ class ResultsViewModel(
     }
 
     fun refresh() = load(forceRefresh = true)
+
+    /** Drop the date window so a thin result set can pull the full history. */
+    fun widenPeriod() {
+        val current = query ?: return
+        if (current.filters.fromYearMonth == null && current.filters.toYearMonth == null) return
+        val widened = current.filters.copy(fromYearMonth = null, toYearMonth = null)
+        query = when (current) {
+            is SearchQuery.Street -> current.copy(filters = widened)
+            is SearchQuery.Neighborhood -> current.copy(filters = widened)
+            is SearchQuery.Settlement -> current.copy(filters = widened)
+            is SearchQuery.Radius -> current.copy(filters = widened)
+        }
+        load(forceRefresh = false)
+    }
 
     private fun load(forceRefresh: Boolean) {
         val query = query ?: run {
