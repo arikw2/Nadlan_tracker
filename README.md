@@ -17,7 +17,7 @@ Android app (Hebrew, RTL) for tracking Israeli real-estate data straight from of
 
 ## Design
 
-The UI follows a design handoff kept in [`handoff/`](handoff/) — open `handoff/Nadlan Tracker Redesign.dc.html` in a browser for the visual reference, and read `handoff/BRIEF.md` for the rationale. The direction is "Organic": a warm cream ground with terracotta primary and sage secondary, Rubik for display and Assistant for body (both OFL, both full Hebrew, bundled as static instances — see [`app/src/main/res/font/README.md`](app/src/main/res/font/README.md)), 22dp cards and pill-shaped controls.
+The UI follows a design handoff kept in [`handoff/`](handoff/) — open `handoff/Nadlan Tracker Redesign.dc.html` in a browser for the visual reference, and read `handoff/BRIEF.md` for the rationale. The direction is "Organic": a warm cream ground with terracotta primary and sage secondary, Rubik for display and Assistant for body (both OFL, both full Hebrew, bundled as static instances — see [`docs/FONTS.md`](docs/FONTS.md)), 22dp cards and pill-shaped controls.
 
 Two decisions worth knowing:
 

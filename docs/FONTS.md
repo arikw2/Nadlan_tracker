@@ -22,4 +22,4 @@ curl -sSLO https://raw.githubusercontent.com/google/fonts/main/ofl/rubik/Rubik%5
 python3 -m fontTools.varLib.instancer 'Rubik[wght].ttf' wght=600 -o rubik_semibold.ttf
 ```
 
-Filenames must stay lowercase with underscores, or aapt rejects them.
+The files live in `app/src/main/res/font/`. Filenames must stay lowercase with underscores, or aapt rejects them.
