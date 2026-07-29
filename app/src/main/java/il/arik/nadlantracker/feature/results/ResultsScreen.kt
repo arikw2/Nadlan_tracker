@@ -204,7 +204,7 @@ private fun ResultsContent(data: ResultsUiState.Data, onWidenPeriod: () -> Unit)
         when (selectedTab) {
             0 -> DealListTab(data, onDealClick = { sheetDeal = it })
             1 -> TrendsTab(data, onWidenPeriod = onWidenPeriod)
-            2 -> MapTab(data)
+            2 -> MapTab(data, selectedDeal = sheetDeal, onDealClick = { sheetDeal = it })
         }
     }
 
