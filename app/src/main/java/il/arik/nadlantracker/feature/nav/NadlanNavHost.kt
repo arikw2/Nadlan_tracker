@@ -8,11 +8,16 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.displayCutout
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.union
 import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.CompareArrows
@@ -80,67 +85,79 @@ fun NadlanNavHost() {
         if (AppPrefs.isOnboarded(context)) NavRoutes.Home else NavRoutes.Onboarding
     }
 
-    Box(Modifier.fillMaxSize()) {
-        NavHost(
-            navController = navController,
-            startDestination = start,
-            modifier = Modifier.fillMaxSize(),
+    // The Surface paints the themed background across the whole window, including
+    // behind the system bars — without it the platform windowBackground showed
+    // through and LocalContentColor fell back to its non-themed default.
+    Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+        Box(
+            Modifier
+                .fillMaxSize()
+                // Keep content and the floating pill clear of the status bar, the
+                // system navigation bar and any display cutout. IME is deliberately
+                // excluded so the keyboard may cover the pill rather than lift it.
+                .windowInsetsPadding(WindowInsets.systemBars.union(WindowInsets.displayCutout)),
         ) {
-            composable<NavRoutes.Onboarding> {
-                OnboardingScreen(
-                    onSeedResolved = { queryJson ->
-                        navController.navigate(NavRoutes.Home) {
-                            popUpTo<NavRoutes.Onboarding> { inclusive = true }
-                        }
-                        navController.navigate(NavRoutes.Results(queryJson, forceRefresh = true))
-                    },
-                    onSearch = {
-                        navController.navigate(NavRoutes.Home) {
-                            popUpTo<NavRoutes.Onboarding> { inclusive = true }
-                        }
-                        navController.navigateTop(NavRoutes.Search)
-                    },
-                )
+            NavHost(
+                navController = navController,
+                startDestination = start,
+                modifier = Modifier.fillMaxSize(),
+            ) {
+                composable<NavRoutes.Onboarding> {
+                    OnboardingScreen(
+                        onSeedResolved = { queryJson ->
+                            navController.navigate(NavRoutes.Home) {
+                                popUpTo<NavRoutes.Onboarding> { inclusive = true }
+                            }
+                            navController.navigate(NavRoutes.Results(queryJson, forceRefresh = true))
+                        },
+                        onSearch = {
+                            navController.navigate(NavRoutes.Home) {
+                                popUpTo<NavRoutes.Onboarding> { inclusive = true }
+                            }
+                            navController.navigateTop(NavRoutes.Search)
+                        },
+                    )
+                }
+                composable<NavRoutes.Home> {
+                    HomeScreen(
+                        onRunFavorite = { queryJson, favoriteId ->
+                            navController.navigate(NavRoutes.Results(queryJson, forceRefresh = true, favoriteId = favoriteId))
+                        },
+                        onSearch = { navController.navigateTop(NavRoutes.Search) },
+                        onSettings = { navController.navigate(NavRoutes.Settings) },
+                    )
+                }
+                composable<NavRoutes.Search> {
+                    SearchScreen(
+                        onShowResults = { queryJson -> navController.navigate(NavRoutes.Results(queryJson)) },
+                    )
+                }
+                composable<NavRoutes.Results> { entry ->
+                    val route = entry.toRoute<NavRoutes.Results>()
+                    ResultsScreen(
+                        queryJson = route.queryJson,
+                        forceRefresh = route.forceRefresh,
+                        favoriteId = route.favoriteId.takeIf { it >= 0 },
+                        onBack = { navController.popBackStack() },
+                    )
+                }
+                composable<NavRoutes.Compare> { CompareScreen() }
+                composable<NavRoutes.Macro> { MacroScreen() }
+                composable<NavRoutes.Settings> {
+                    SettingsScreen(onBack = { navController.popBackStack() })
+                }
             }
-            composable<NavRoutes.Home> {
-                HomeScreen(
-                    onRunFavorite = { queryJson, favoriteId ->
-                        navController.navigate(NavRoutes.Results(queryJson, forceRefresh = true, favoriteId = favoriteId))
-                    },
-                    onSearch = { navController.navigateTop(NavRoutes.Search) },
-                    onSettings = { navController.navigate(NavRoutes.Settings) },
-                )
-            }
-            composable<NavRoutes.Search> {
-                SearchScreen(
-                    onShowResults = { queryJson -> navController.navigate(NavRoutes.Results(queryJson)) },
-                )
-            }
-            composable<NavRoutes.Results> { entry ->
-                val route = entry.toRoute<NavRoutes.Results>()
-                ResultsScreen(
-                    queryJson = route.queryJson,
-                    forceRefresh = route.forceRefresh,
-                    favoriteId = route.favoriteId.takeIf { it >= 0 },
-                    onBack = { navController.popBackStack() },
-                )
-            }
-            composable<NavRoutes.Compare> { CompareScreen() }
-            composable<NavRoutes.Macro> { MacroScreen() }
-            composable<NavRoutes.Settings> {
-                SettingsScreen(onBack = { navController.popBackStack() })
-            }
-        }
 
-        if (showNav) {
-            FloatingPillNav(
-                destinations = topDestinations,
-                currentDestination = currentDestination,
-                onSelect = { navController.navigateTop(it) },
-                modifier = Modifier
-                    .align(Alignment.BottomCenter)
-                    .padding(horizontal = 14.dp, vertical = 14.dp),
-            )
+            if (showNav) {
+                FloatingPillNav(
+                    destinations = topDestinations,
+                    currentDestination = currentDestination,
+                    onSelect = { navController.navigateTop(it) },
+                    modifier = Modifier
+                        .align(Alignment.BottomCenter)
+                        .padding(horizontal = 14.dp, vertical = 14.dp),
+                )
+            }
         }
     }
 }

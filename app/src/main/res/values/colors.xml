@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="ic_launcher_background">#0B5D4E</color>
+    <!-- Ink, per the handoff: the launcher tile moves teal → ink, glyph unchanged. -->
+    <color name="ic_launcher_background">#201E1D</color>
+    <!-- Cream — the Organic ground. values-night overrides this to ink. -->
+    <color name="window_background">#F5EAD8</color>
 </resources>

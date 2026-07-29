@@ -121,8 +121,11 @@ fun NadlanTrackerTheme(
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as? android.app.Activity)?.window ?: return@SideEffect
-            WindowCompat.getInsetsController(window, view)
-                .isAppearanceLightStatusBars = !darkTheme
+            WindowCompat.getInsetsController(window, view).apply {
+                // Dark icons over the cream ground, light icons over ink.
+                isAppearanceLightStatusBars = !darkTheme
+                isAppearanceLightNavigationBars = !darkTheme
+            }
         }
     }
 

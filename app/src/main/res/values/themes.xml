@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.NadlanTracker" parent="android:Theme.Material.Light.NoActionBar" />
+    <!--
+      The parent only styles View-based widgets, which this app doesn't use — the UI
+      is entirely Compose and the system bars are handled by enableEdgeToEdge plus
+      the insets controller in Theme.kt. What matters here is windowBackground: it
+      is the Organic ground colour and resolves per-night via values-night/colors.xml,
+      so the first frame and the area behind the system bars are never off-palette.
+      (The platform has no Theme.Material.DayNight; picking it per-night this way is
+      the equivalent without pulling in AppCompat.)
+    -->
+    <style name="Theme.NadlanTracker" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/window_background</item>
+    </style>
 </resources>
